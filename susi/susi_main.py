@@ -242,7 +242,7 @@ class Susi():
                 
                 
                 # --------- Locate cuttings here--------------------
-                if yr == 2005: 
+                if yr == 2205: 
                       stand.dominant.cutting(yr, nut_stat =  stand.nut_stat, to_ba = 10)            
                       stand.update_lresid()
                 #      """ ATTN distinct stem mortaility from the logging -> fate of stems different!!!"""            
