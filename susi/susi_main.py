@@ -265,23 +265,23 @@ class Susi():
                     construct balcances at the end of simulation, join to outputs
                 """
                 nonwoodylitter = (stand.nonwoodylitter + stand.nonwoody_lresid + stand.non_woody_litter_mort + groundvegetation.nonwoodylitter)/10000.     #conversion kg/ha/yr -> kg/m2/yr
-                woodylitter = (stand.woodylitter + stand.woody_lresid + stand.woody_litter_mort) /10000. 
+                woodylitter = (stand.woodylitter + stand.woody_lresid + stand.woody_litter_mort + groundvegetation.woodylitter) /10000. 
                 esmass.run_yr(forc.loc[str(yr)], df_peat_temperatures, dfwt, nonwoodylitter, woodylitter)
                 esmass.compose_export(stp, df_peat_temperatures)            
                 out.write_esom(r, year+1, 'Mass', esmass)
                 
-                n_nonwoodylitter = (stand.n_nonwoodylitter + stand.n_nonwoody_lresid + stand.n_non_woody_litter_mort + groundvegetation.n_litter)/10000. 
-                n_woodylitter = (stand.n_woodylitter + stand.n_woody_lresid + stand.n_woody_litter_mort + stand.n_woody_litter_mort) /10000. 
+                n_nonwoodylitter = (stand.n_nonwoodylitter + stand.n_nonwoody_lresid + stand.n_non_woody_litter_mort + groundvegetation.n_litter_nw)/10000. 
+                n_woodylitter = (stand.n_woodylitter + stand.n_woody_lresid + stand.n_woody_litter_mort + stand.n_woody_litter_mort + groundvegetation.n_litter_w) /10000. 
                 esN.run_yr(forc.loc[str(yr)], df_peat_temperatures, dfwt, n_nonwoodylitter, n_woodylitter)
                 out.write_esom(r, year+1, 'N', esN)
                 
-                p_nonwoodylitter = (stand.p_nonwoodylitter + stand.p_nonwoody_lresid + stand.p_non_woody_litter_mort  + groundvegetation.p_litter)/10000.
-                p_woodylitter = (stand.p_woodylitter + stand.p_woody_lresid + stand.p_woody_litter_mort)/10000. 
+                p_nonwoodylitter = (stand.p_nonwoodylitter + stand.p_nonwoody_lresid + stand.p_non_woody_litter_mort  + groundvegetation.p_litter_nw)/10000.
+                p_woodylitter = (stand.p_woodylitter + stand.p_woody_lresid + stand.p_woody_litter_mort + groundvegetation.p_litter_w)/10000. 
                 esP.run_yr(forc.loc[str(yr)], df_peat_temperatures, dfwt, p_nonwoodylitter, p_woodylitter)
                 out.write_esom(r, year+1, 'P', esP)
     
-                k_nonwoodylitter = (stand.k_nonwoodylitter + stand.k_nonwoody_lresid + stand.k_non_woody_litter_mort + groundvegetation.k_litter)/10000. 
-                k_woodylitter = (stand.k_woodylitter + stand.k_woody_lresid + stand.k_woody_litter_mort)/10000. 
+                k_nonwoodylitter = (stand.k_nonwoodylitter + stand.k_nonwoody_lresid + stand.k_non_woody_litter_mort + groundvegetation.k_litter_nw)/10000. 
+                k_woodylitter = (stand.k_woodylitter + stand.k_woody_lresid + stand.k_woody_litter_mort + groundvegetation.k_litter_w)/10000. 
                 esK.run_yr(forc.loc[str(yr)], df_peat_temperatures, dfwt, k_nonwoodylitter, k_woodylitter)
                 out.write_esom(r, year+1, 'K', esK)
     

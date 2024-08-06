@@ -140,9 +140,15 @@ class Gvegetation():
         self.ds_litterfall = np.zeros(self.n)                    # dwarf shrub litterfall kg ha-1 yr-1
         self.h_litterfall = np.zeros(self.n)                     # herbs and grasses litterfall kg ha-1 yr-1
         self.s_litterfall = np.zeros(self.n)                     # sphagnum mosses litterfall kg ha-1 yr-1
-        self.n_litter = np.zeros(self.n)                       # N uptake due to litterfall kg ha-1 yr-1
-        self.p_litter = np.zeros(self.n)                       # P uptake due to litterfall kg ha-1 yr-1
-        self.k_litter = np.zeros(self.n)                       # K uptake due to litterfall kg ha-1 yr-1
+        
+        self.n_litter_nw = np.zeros(self.n)                       # N uptake due to litterfall kg ha-1 yr-1
+        self.p_litter_nw = np.zeros(self.n)                       # P uptake due to litterfall kg ha-1 yr-1
+        self.k_litter_nw = np.zeros(self.n)                       # K uptake due to litterfall kg ha-1 yr-1
+        
+        self.n_litter_w = np.zeros(self.n)                       # N uptake due to litterfall kg ha-1 yr-1
+        self.p_litter_w = np.zeros(self.n)                       # P uptake due to litterfall kg ha-1 yr-1
+        self.k_litter_w = np.zeros(self.n)                       # K uptake due to litterfall kg ha-1 yr-1
+
         self.n_gv = np.zeros(self.n)                             # N in ground vegetation kg ha-1
         self.p_gv = np.zeros(self.n)                             # P in ground vegetation kg ha-1
         self.k_gv = np.zeros(self.n)                             # K in ground vegetation kg ha-1
@@ -157,9 +163,15 @@ class Gvegetation():
         ds_litterfall = np.zeros(self.n)                    # dwarf shrub litterfall kg ha-1 yr-1
         h_litterfall = np.zeros(self.n)                     # herbs and grasses litterfall kg ha-1 yr-1
         s_litterfall = np.zeros(self.n)                     # sphagnum mosses litterfall kg ha-1 yr-1
-        n_litter = np.zeros(self.n)                         # N uptake due to litterfall kg ha-1 yr-1
-        p_litter = np.zeros(self.n)                         # P uptake due to litterfall kg ha-1 yr-1
-        k_litter = np.zeros(self.n)                         # K uptake due to litterfall kg ha-1 yr-1
+        
+        n_litter_nw = np.zeros(self.n)                         # N uptake due to litterfall kg ha-1 yr-1
+        p_litter_nw = np.zeros(self.n)                         # P uptake due to litterfall kg ha-1 yr-1
+        k_litter_nw = np.zeros(self.n)                         # K uptake due to litterfall kg ha-1 yr-1
+        
+        n_litter_w = np.zeros(self.n)                         # N uptake due to litterfall kg ha-1 yr-1
+        p_litter_w = np.zeros(self.n)                         # P uptake due to litterfall kg ha-1 yr-1
+        k_litter_w = np.zeros(self.n)                         # K uptake due to litterfall kg ha-1 yr-1
+        
         n_gv = np.zeros(self.n)                             # N in ground vegetation kg ha-1
         p_gv = np.zeros(self.n)                             # P in ground vegetation kg ha-1
         k_gv = np.zeros(self.n)                             # K in ground vegetation kg ha-1
@@ -203,19 +215,26 @@ class Gvegetation():
                         + gv_field[ix] * self.fl_share['spruce_mire']['h'] *  self.nut_con['h']['K']*1e-3 * self.fl_above_to_total \
                         + gv_bot[ix] * self.nut_con['s']['K']*1e-3
         
-        n_litter[ix] = ds_litterfall[ix] * self.nut_con['ds']['N']*1e-3 * (1.0 -self.retrans['ds']['N']) \
+        n_litter_nw[ix] = ds_litterfall[ix] * self.nut_con['ds']['N']*1e-3 * (1.0 -self.retrans['ds']['N'])*0.25 \
                         + h_litterfall[ix] * self.nut_con['h']['N']*1e-3 * (1.0 -self.retrans['h']['N']) \
                         + s_litterfall[ix] * self.nut_con['s']['N']*1e-3 * (1.0 -self.retrans['s']['N'])
         
-        p_litter[ix] = ds_litterfall[ix] * self.nut_con['ds']['P']*1e-3 * (1.0 -self.retrans['ds']['P']) \
+        p_litter_nw[ix] = ds_litterfall[ix] * self.nut_con['ds']['P']*1e-3 * (1.0 -self.retrans['ds']['P'])*0.25 \
                         + h_litterfall[ix] * self.nut_con['h']['P']*1e-3 * (1.0 -self.retrans['h']['P']) \
                         + s_litterfall[ix] * self.nut_con['s']['P']*1e-3 * (1.0 -self.retrans['s']['P'])
         
-        k_litter[ix] = ds_litterfall[ix] * self.nut_con['ds']['K']*1e-3 * (1.0 -self.retrans['ds']['K']) \
+        k_litter_nw[ix] = ds_litterfall[ix] * self.nut_con['ds']['K']*1e-3 * (1.0 -self.retrans['ds']['K'])*0.25 \
                         + h_litterfall[ix] * self.nut_con['h']['K']*1e-3 * (1.0 -self.retrans['h']['K']) \
                         + s_litterfall[ix] * self.nut_con['s']['K']*1e-3 * (1.0 -self.retrans['s']['K'])
         
-       # ***************** Pine bogs ***************************************
+        
+        n_litter_w[ix] = ds_litterfall[ix] * self.nut_con['ds']['N']*1e-3 * (1.0 -self.retrans['ds']['N'])*0.75 
+                         
+        p_litter_w[ix] = ds_litterfall[ix] * self.nut_con['ds']['P']*1e-3 * (1.0 -self.retrans['ds']['P'])*0.75 
+        
+        k_litter_w[ix] = ds_litterfall[ix] * self.nut_con['ds']['K']*1e-3 * (1.0 -self.retrans['ds']['K'])*0.75 
+       
+        # ***************** Pine bogs ***************************************
 
         ix = self.ix_pine_bog            
         gv_tot[ix] =  np.square(50.098 + 0.005 * self.longitude*self.dem[ix] -1e-5 * vol[ix] * Nstems[ix] + 0.026 * self.sfc[ix] * age[ix] \
@@ -252,18 +271,24 @@ class Gvegetation():
                         + gv_field[ix] * self.fl_share['pine_bog']['h'] * self.nut_con['h']['K']*1e-3 * self.fl_above_to_total \
                         + gv_bot[ix] * self.nut_con['s']['K']*1e-3
         
-        n_litter[ix] = ds_litterfall[ix] * self.nut_con['ds']['N']*1e-3 * (1.0 -self.retrans['ds']['N']) \
+        n_litter_nw[ix] = ds_litterfall[ix] * self.nut_con['ds']['N']*1e-3 * (1.0 -self.retrans['ds']['N'])*0.25 \
                         + h_litterfall[ix] * self.nut_con['h']['N']*1e-3 * (1.0 -self.retrans['h']['N']) \
                         + s_litterfall[ix] * self.nut_con['s']['N']*1e-3 * (1.0 -self.retrans['s']['N'])
         
-        p_litter[ix] =  ds_litterfall[ix] * self.nut_con['ds']['P']*1e-3 * (1.0 -self.retrans['ds']['P']) \
+        p_litter_nw[ix] =  ds_litterfall[ix] * self.nut_con['ds']['P']*1e-3 * (1.0 -self.retrans['ds']['P'])*0.25 \
                         + h_litterfall[ix] * self.nut_con['h']['P']*1e-3 * (1.0 -self.retrans['h']['P']) \
                         + s_litterfall[ix] * self.nut_con['s']['P']*1e-3 * (1.0 -self.retrans['s']['P'])
                         
-        k_litter[ix] =  ds_litterfall[ix] * self.nut_con['ds']['K']*1e-3 * (1.0 -self.retrans['ds']['K']) \
+        k_litter_nw[ix] =  ds_litterfall[ix] * self.nut_con['ds']['K']*1e-3 * (1.0 -self.retrans['ds']['K'])*0.25 \
                         + h_litterfall[ix] * self.nut_con['h']['K']*1e-3 * (1.0 -self.retrans['h']['K']) \
                         + s_litterfall[ix] * self.nut_con['s']['K']*1e-3 * (1.0 -self.retrans['s']['K'])
 
+
+        n_litter_w[ix] = ds_litterfall[ix] * self.nut_con['ds']['N']*1e-3 * (1.0 -self.retrans['ds']['N'])*0.75
+        
+        p_litter_w[ix] =  ds_litterfall[ix] * self.nut_con['ds']['P']*1e-3 * (1.0 -self.retrans['ds']['P'])*0.75
+                        
+        k_litter_w[ix] =  ds_litterfall[ix] * self.nut_con['ds']['K']*1e-3 * (1.0 -self.retrans['ds']['K'])*0.75
         
         #------------Change clear-cut areas: reduce to 1/3 of modelled ---------------------------------------------------
         to_cc = 0.33
@@ -272,14 +297,21 @@ class Gvegetation():
         n_gv[ix_cc] = n_gv[ix_cc] * to_cc 
         p_gv[ix_cc] = p_gv[ix_cc] * to_cc
         k_gv[ix_cc] = k_gv[ix_cc] * to_cc
-        n_litter[ix_cc] = n_litter[ix_cc] * to_cc
-        p_litter[ix_cc] = p_litter[ix_cc] * to_cc 
-        k_litter[ix_cc] = k_litter[ix_cc] * to_cc 
+        
+        n_litter_nw[ix_cc] = n_litter_nw[ix_cc] * to_cc
+        p_litter_nw[ix_cc] = p_litter_nw[ix_cc] * to_cc 
+        k_litter_nw[ix_cc] = k_litter_nw[ix_cc] * to_cc 
+        
+        n_litter_w[ix_cc] = n_litter_w[ix_cc] * to_cc
+        p_litter_w[ix_cc] = p_litter_w[ix_cc] * to_cc 
+        k_litter_w[ix_cc] = k_litter_w[ix_cc] * to_cc 
+        
         gv_tot[ix_cc] = gv_tot[ix_cc] * to_cc
 
         litterfall_gv = ds_litterfall + h_litterfall + s_litterfall
         
-        return gv_tot, gv_field, gv_bot, n_gv, p_gv, k_gv, n_litter, p_litter, k_litter, \
+        return gv_tot, gv_field, gv_bot, n_gv, p_gv, k_gv,\
+               n_litter_nw, p_litter_nw, k_litter_nw, n_litter_w, p_litter_w, k_litter_w,\
                 litterfall_gv, ds_litterfall, h_litterfall, s_litterfall, gv_leafmass
 
     def run(self, ba, stems, vol, sp, ts, age):
@@ -289,7 +321,8 @@ class Gvegetation():
         #---------------------------------------  
         gv_tot_ini = self.gv_tot 
         
-        gv_tot, gv_field, gv_bot, n_gv, p_gv, k_gv, n_litter, p_litter, k_litter, \
+        gv_tot, gv_field, gv_bot, n_gv, p_gv, k_gv,\
+            n_litter_nw, p_litter_nw, k_litter_nw, n_litter_w, p_litter_w, k_litter_w,\
                 litterfall_gv, ds_litterfall, h_litterfall, s_litterfall,\
                     gv_leafmass = self.gv_biomass_and_nutrients(ts, vol, stems, ba,  age)
     
@@ -299,18 +332,24 @@ class Gvegetation():
         pup_net = np.where(p_gv - self.p_gv > 0.0, p_gv - self.p_gv, 0.0)
         kup_net = np.where(k_gv - self.k_gv > 0.0, k_gv - self.k_gv, 0.0)
         
-        self.nup = nup_net + n_litter        # total N uptake kg ha-1 simulation time (in yrs) -1
-        self.pup = pup_net + p_litter        # total P uptake kg ha-1 simulation time (in yrs) -1
-        self.kup = kup_net + k_litter        # total P uptake kg ha-1 simulation time (in yrs) -1
+        self.nup = nup_net + n_litter_nw +  n_litter_w     # total N uptake kg ha-1 simulation time (in yrs) -1
+        self.pup = pup_net + p_litter_nw +  p_litter_w       # total P uptake kg ha-1 simulation time (in yrs) -1
+        self.kup = kup_net + k_litter_nw +  k_litter_w       # total P uptake kg ha-1 simulation time (in yrs) -1
     
         self.n_gv = n_gv
         self.p_gv = p_gv
         self.k_gv = k_gv
-        self.n_litter = n_litter 
-        self.p_litter = p_litter
-        self.k_litter = k_litter
+        self.n_litter_nw = n_litter_nw 
+        self.p_litter_nw = p_litter_nw
+        self.k_litter_nw = k_litter_nw
+        
+        self.n_litter_w = n_litter_w 
+        self.p_litter_w = p_litter_w
+        self.k_litter_w = k_litter_w
+        
         self.gv_tot = gv_tot 
-        self.litterfall_gv = litterfall_gv
+        self.litterfall_gv_nw = litterfall_gv - ds_litterfall*0.75
+        self.litterfall_gv_w =  ds_litterfall*0.75
         self.gv_leafmass = gv_leafmass
         
         self.gv_tot = gv_tot                           # Ground vegetation mass kg ha-1
@@ -319,9 +358,13 @@ class Gvegetation():
         self.ds_litterfall = ds_litterfall                    # dwarf shrub litterfall kg ha-1 yr-1
         self.h_litterfall = h_litterfall                     # herbs and grasses litterfall kg ha-1 yr-1
         self.s_litterfall = s_litterfall                     # sphagnum mosses litterfall kg ha-1 yr-1
-        self.nonwoodylitter = litterfall_gv
+        self.nonwoodylitter = self.litterfall_gv_nw
+        self.woodylitter = ds_litterfall*0.75
         self.gv_change = gv_tot_ini - self.gv_tot
         
         
-        return self.nup, self.pup, self.kup, self.n_litter, self.p_litter, self.k_litter, self.litterfall_gv, self.gv_leafmass
+        return self.nup, self.pup, self.kup, self.n_litter_nw, self.p_litter_nw, self.k_litter_nw,\
+            self.n_litter_w, self.p_litter_w, self.k_litter_w,\
+            self.nonwoodylitter, self.woodylitter,\
+            self.gv_leafmass
 

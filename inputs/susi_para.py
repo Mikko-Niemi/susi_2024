@@ -108,6 +108,8 @@ def get_susi_para(wlocation=None, peat=None, photosite='All data', folderName=No
         'peatN':peatN, 'peatP':peatP, 'peatK':peatK,
         'enable_peattop': True, 'enable_peatmiddle': True,
         'enable_peatbottom': True,
+        'h_mor': 0.04,                                                         # depth of mor layer, m
+        'rho_mor': 100.0,                                                      # bulk density of mor layer, kg m-3
         'depoN': 4.0, 'depoP':0.1, 'depoK':1.0,
         'fertilization': {
                 'application year': 2201,
@@ -145,6 +147,8 @@ def get_susi_para(wlocation=None, peat=None, photosite='All data', folderName=No
         'peatN':peatN, 'peatP':peatP, 'peatK':peatK,
         'enable_peattop': True, 'enable_peatmiddle': True,
         'enable_peatbottom': True,
+        'h_mor': 0.04,                                                         # depth of mor layer, m
+        'rho_mor': 100.0,                                                      # bulk density of mor layer, kg m-3
         'depoN': 4.0, 'depoP':0.1, 'depoK':1.0,
         'fertilization': {
                 'application year': 2201,
@@ -179,6 +183,8 @@ def get_susi_para(wlocation=None, peat=None, photosite='All data', folderName=No
         'peatN':1.2, 'peatP':0.12, 'peatK':0.07,                               #peat nutrient contents in gravimetric %
         'enable_peattop': True, 'enable_peatmiddle': False,
         'enable_peatbottom': False,
+        'h_mor': 0.04,                                                         # depth of mor layer, m
+        'rho_mor': 100.0,                                                      # bulk density of mor layer, kg m-3
         'depoN': 4.0, 'depoP':0.1, 'depoK':1.0,
         'fertilization': {
                 'application year': 2201,
@@ -213,6 +219,8 @@ def get_susi_para(wlocation=None, peat=None, photosite='All data', folderName=No
         'peatN':0.86, 'peatP':0.007, 'peatK':0.026,                               #peat nutrient contents in gravimetric %
         'enable_peattop': True, 'enable_peatmiddle': True,
         'enable_peatbottom': True,
+        'h_mor': 0.04,                                                         # depth of mor layer, m
+        'rho_mor': 100.0,                                                      # bulk density of mor layer, kg m-3
         'depoN': 4.0, 'depoP':0.1, 'depoK':1.0,
         'fertilization': {
                 'application year': 2201,

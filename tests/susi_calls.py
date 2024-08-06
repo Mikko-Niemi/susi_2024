@@ -13,10 +13,10 @@ from susi.susi_main import Susi
 
 #***************** local call for SUSI*****************************************************
 folderName=r'C:/Users/alauren/Documents/WinPython-64bit-2.7.10.3/Susi_8_3_py37/outputs/' #'sensitivity/'
-wpath = r'C:/Users/alauren/OneDrive - University of Eastern Finland/codes/Susi_10/inputs/'
+wpath = r'C:/Users/alauren/OneDrive - University of Eastern Finland/codes/susi_11/inputs/'
 
 
-mottifile = {'path':r'C:/Users/alauren/OneDrive - University of Eastern Finland/codes/Susi_10/inputs/',
+mottifile = {'path':r'C:/Users/alauren/OneDrive - University of Eastern Finland/codes/susi_11/inputs/',
               'dominant':{1: 'motti viitasaari_mtkg.xls'},
               'subdominant':{0:'susi_motti_input_lyr_1.xlsx'},
               'under':{0:'susi_motti_input_lyr_2.xlsx'}} 
@@ -28,8 +28,8 @@ mottifile = {'path':r'C:/Users/alauren/OneDrive - University of Eastern Finland/
 """
 wdata='parkano_weather.csv'
 
-start_date = datetime.datetime(1995,1,1)
-end_date=datetime.datetime(2014,12,31)
+start_date = datetime.datetime(2000,1,1)
+end_date=datetime.datetime(2003,12,31)
 start_yr = start_date.year 
 end_yr = end_date.year
 yrs = (end_date - start_date).days/365.25

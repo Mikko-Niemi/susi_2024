@@ -239,12 +239,22 @@ class Outputs():
         h_litterfall.units = 'herbs and sedges litterfall dry matter  [kg/ha/yr]'    
         s_litterfall = self.ncf.createVariable('/groundvegetation/s_litterfall','f4',('nscens','nyrs', 'ncols',))                             # stand dry biomass kg/ha
         s_litterfall.units = 'sphagnum mosses litterfall dry matter  [kg/ha/yr]'
-        n_litter = self.ncf.createVariable('/groundvegetation/n_litter','f4',('nscens','nyrs', 'ncols',))                             # stand dry biomass kg/ha
-        n_litter.units = 'N in ground vegetation litterfall dry matter  [kg/ha/yr]'
-        p_litter = self.ncf.createVariable('/groundvegetation/p_litter','f4',('nscens','nyrs', 'ncols',))                             # stand dry biomass kg/ha
-        p_litter.units = 'P in ground vegetation litterfall dry matter  [kg/ha/yr]'
-        k_litter = self.ncf.createVariable('/groundvegetation/k_litter','f4',('nscens','nyrs', 'ncols',))                             # stand dry biomass kg/ha
-        k_litter.units = 'K in ground vegetation litterfall dry matter  [kg/ha/yr]'
+        
+        n_litter_nw = self.ncf.createVariable('/groundvegetation/n_litter_nw','f4',('nscens','nyrs', 'ncols',))                             # stand dry biomass kg/ha
+        n_litter_nw.units = 'N in ground vegetation litterfall dry matter  [kg/ha/yr]'
+        p_litter_nw = self.ncf.createVariable('/groundvegetation/p_litter_nw','f4',('nscens','nyrs', 'ncols',))                             # stand dry biomass kg/ha
+        p_litter_nw.units = 'P in ground vegetation litterfall dry matter  [kg/ha/yr]'
+        k_litter_nw = self.ncf.createVariable('/groundvegetation/k_litter_nw','f4',('nscens','nyrs', 'ncols',))                             # stand dry biomass kg/ha
+        k_litter_nw.units = 'K in ground vegetation litterfall dry matter  [kg/ha/yr]'
+
+        n_litter_w = self.ncf.createVariable('/groundvegetation/n_litter_w','f4',('nscens','nyrs', 'ncols',))                             # stand dry biomass kg/ha
+        n_litter_w.units = 'N in ground vegetation litterfall dry matter  [kg/ha/yr]'
+        p_litter_w = self.ncf.createVariable('/groundvegetation/p_litter_w','f4',('nscens','nyrs', 'ncols',))                             # stand dry biomass kg/ha
+        p_litter_w.units = 'P in ground vegetation litterfall dry matter  [kg/ha/yr]'
+        k_litter_w = self.ncf.createVariable('/groundvegetation/k_litter_w','f4',('nscens','nyrs', 'ncols',))                             # stand dry biomass kg/ha
+        k_litter_w.units = 'K in ground vegetation litterfall dry matter  [kg/ha/yr]'
+
+        
         n_gv = self.ncf.createVariable('/groundvegetation/n_gv','f4',('nscens','nyrs', 'ncols',))                             # stand dry biomass kg/ha
         n_gv.units = 'N in ground vegetation  [kg/ha]'
         p_gv = self.ncf.createVariable('/groundvegetation/p_gv','f4',('nscens','nyrs', 'ncols',))                             # stand dry biomass kg/ha
@@ -563,9 +573,15 @@ class Outputs():
         self.ncf['groundvegetation']['ds_litterfall'][scen, year, :] = gv.ds_litterfall
         self.ncf['groundvegetation']['h_litterfall'][scen, year, :] = gv.h_litterfall
         self.ncf['groundvegetation']['s_litterfall'][scen, year, :] = gv.s_litterfall
-        self.ncf['groundvegetation']['n_litter'][scen, year, :] = gv.n_litter
-        self.ncf['groundvegetation']['p_litter'][scen, year, :] = gv.p_litter
-        self.ncf['groundvegetation']['k_litter'][scen, year, :] = gv.k_litter       
+        
+        self.ncf['groundvegetation']['n_litter_nw'][scen, year, :] = gv.n_litter_nw
+        self.ncf['groundvegetation']['p_litter_nw'][scen, year, :] = gv.p_litter_nw
+        self.ncf['groundvegetation']['k_litter_nw'][scen, year, :] = gv.k_litter_nw       
+
+        self.ncf['groundvegetation']['n_litter_w'][scen, year, :] = gv.n_litter_w
+        self.ncf['groundvegetation']['p_litter_w'][scen, year, :] = gv.p_litter_w
+        self.ncf['groundvegetation']['k_litter_w'][scen, year, :] = gv.k_litter_w       
+        
         self.ncf['groundvegetation']['n_gv'][scen, year, :] = gv.n_gv
         self.ncf['groundvegetation']['p_gv'][scen, year, :] = gv.p_gv
         self.ncf['groundvegetation']['k_gv'][scen, year, :] = gv.k_gv

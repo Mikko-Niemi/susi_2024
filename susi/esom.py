@@ -91,7 +91,8 @@ class Esom():
 
         # ---------this to array------------
         self.sfc_specification = 2 #np.ones(shape_area, dtype=int)             # MTkg1, MTkg2
-        
+        self.h_mor = spara['h_mor']                                            # mor layer thickness, m
+        self.rho_mor = spara['rho_mor']                                        # mor layer bulk density kg m-3
         self.bound1 = 0.15  #0.2                                               # boundary between top and middle layer, m
         self.bound2 = 0.4    #0.5                                              # boundary between middle and bottom layers, m
         self.i = 0                                                             # day counter
@@ -177,21 +178,21 @@ class Esom():
           self.previous_mass = np.zeros(self.y)    
           
           self.i = 0
-          h_humus = 0.06       #0.001                                   # Mor humus thickness in (m)
-          rho_humus = 100.0                                       # Bulk density of the mor (kg m3)
+          h_mor = self.h_mor       #0.001                                   # Mor humus thickness in (m)
+          rho_mor = self.rho_mor  #100.0                                       # Bulk density of the mor (kg m3)
           frac_L = 0.1                                            # Share of undecomposed litter (L) from the mor thickness (fraction 0...1)
           frac_F = 0.2                                            # Share of partly decomposed F material from the mor thickness (fraction 0...1)
           frac_H = 0.7                                            # Share of humified H material from the mor thickness (fraction 0...1)
           frac_leaf = 0.5                                         # Share of non-woody material from L and F material (fraction 0...1)
           frac_woody = 0.5                                        # Share of non-woody material from L and F material (fraction 0...1)
     
-          LL_mass = h_humus*frac_L*rho_humus * frac_leaf * self.contpara_mor[self.substance] / 100.
-          LW_mass = h_humus*frac_L*rho_humus * frac_woody* self.contpara_mor[self.substance] / 100.
+          LL_mass = h_mor*frac_L*rho_mor * frac_leaf * self.contpara_mor[self.substance] / 100.
+          LW_mass = h_mor*frac_L*rho_mor * frac_woody* self.contpara_mor[self.substance] / 100.
     
-          FL_mass = h_humus*frac_F*rho_humus * frac_leaf* self.contpara_mor[self.substance] / 100.
-          FW_mass = h_humus*frac_F*rho_humus * frac_woody* self.contpara_mor[self.substance] / 100.
+          FL_mass = h_mor*frac_F*rho_mor * frac_leaf* self.contpara_mor[self.substance] / 100.
+          FW_mass = h_mor*frac_F*rho_mor * frac_woody* self.contpara_mor[self.substance] / 100.
     
-          H_mass = h_humus*frac_H*rho_humus* self.contpara_mor[self.substance] / 100.
+          H_mass = h_mor*frac_H*rho_mor* self.contpara_mor[self.substance] / 100.
     
           # ****** Initialize the Mass matrix, that contains the current mass of matter in different stages of decomposition
           self.M_shape = (self.x,self.y,11)
