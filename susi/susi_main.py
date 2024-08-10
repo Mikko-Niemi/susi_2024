@@ -38,8 +38,8 @@ class Susi():
          
         dtc = cpara['dt']                                                          # canopy model timestep
     
-        start_date = datetime.datetime(start_yr,1,1) 
-        end_date=datetime.datetime(end_yr,12,31)
+        start_date = datetime.datetime(start_yr,1,1)                               # simulation start date
+        end_date=datetime.datetime(end_yr,12,31)                                   # simulation end date
         length = (end_date - start_date).days +1                                   # simulation time in days
         yrs = end_yr - start_yr +1                                                 # simulation time in years
         ts = get_temp_sum(forc)                                                    # temperature sum degree days
@@ -48,46 +48,47 @@ class Susi():
         
         outname = outpara['outfolder'] +  outpara['netcdf']                        # name and path for the netcdf4 file for output
         
-        out = Outputs(nscens, n, length, yrs, spara['nLyrs'], outname)
-        out.initialize_scens()
-        out.initialize_paras()
+        out = Outputs(nscens, n, length, yrs, spara['nLyrs'], outname)             # create output class variable
+        out.initialize_scens()                                                     # write number scenario attributes: ditch depth,
+        out.initialize_paras()                                                     # write tree species, sfc
         
         lat=forc['lat'][0]; lon=forc['lon'][0]                                     # location of weather file, determines the simulation location
         print ('      - Weather input:', wpara['description'], ', start:', start_yr, ', end:', end_yr) 
         print ('      - Latitude:', lat, ', Longitude:', lon )
     
     
-        stand = Stand(nscens, yrs, spara['canopylayers'], spara['n'], sfc, ageSim, mottifile, photopara)   
-        stand.update()
+        stand = Stand(nscens, yrs, spara['canopylayers'], spara['n'], sfc, ageSim, mottifile, photopara)   # create stand class
+        stand.update()                                                          
         #spara = stand.update_spara(spara)    
         
-        out.initialize_stand()
-        out.initialize_canopy_layer('dominant')
+        out.initialize_stand()                                                     # create output variables to netCDF
+        out.initialize_canopy_layer('dominant')                                    # output variables of trees
         out.initialize_canopy_layer('subdominant')
         out.initialize_canopy_layer('under')
         
-        out.write_paras(spara['sfc'], stand.dominant.tree_species, stand.subdominant.tree_species, stand.under.tree_species)
+        out.write_paras(spara['sfc'], stand.dominant.tree_species,\
+                        stand.subdominant.tree_species, stand.under.tree_species)
     
-        print_site_description(spara)                                      # Describe site parameters for user
+        print_site_description(spara)                                               # Describe site parameters for user
     
-        groundvegetation = Gvegetation(spara['n'], lat, lon, sfc, stand.dominant.species)
+        groundvegetation = Gvegetation(spara['n'], lat, lon, sfc, stand.dominant.species)   # creates ground vegetation class
         groundvegetation.run(stand.basalarea, stand.stems, stand.volume,\
-                             stand.dominant.species, ts, ageSim['dominant'])
-        out.initialize_gv()
+                             stand.dominant.species, ts, ageSim['dominant'])         
+        out.initialize_gv()                                                        # output variables to netCDF
     
         
         esmass = Esom(spara, sfc, 366*yrs, substance='Mass')                       # initializing organic matter decomposition instace for mass
         esN = Esom(spara, sfc, 366*yrs, substance='N')                             # initializing organic matter decomposition instace for N
         esP = Esom(spara, sfc, 366*yrs, substance='P')                             # initializing organic matter decomposition instace for P
         esK = Esom(spara, sfc, 366*yrs, substance='K')                             # initializing organic matter decomposition instace for K
-        ferti = Fertilization(spara)
+        ferti = Fertilization(spara)                                               # initializing fertilization object
     
-        out.initialize_esom('Mass')
+        out.initialize_esom('Mass')                                                # creating output variables for organic matter 
         out.initialize_esom('N')
         out.initialize_esom('P')
         out.initialize_esom('K')
-        out.initialize_fertilization()
-        out.initialize_nutrient_balance('N')
+        out.initialize_fertilization()                                             # creating output variables for fertilization 
+        out.initialize_nutrient_balance('N')                                       # and for nutrient balance
         out.initialize_nutrient_balance('P')
         out.initialize_nutrient_balance('K')
         out.initialize_carbon_balance()
@@ -108,15 +109,15 @@ class Susi():
     
         #******** Soil and strip parameterization *************************
         stp = StripHydrology(spara)                                                # initialize soil hydrology model
-        out.initialize_strip(stp)
+        out.initialize_strip(stp)                                                  # outputs for soil hydrology
         
         pt = PeatTemperature(spara, forc['T'].mean())                              # initialize peat temperature model       
         out.initialize_temperature()
             
-        ch4s = Methane(n, yrs)
-        out.initialize_methane()
+        ch4s = Methane(n, yrs)                                                     # methane output model
+        out.initialize_methane()                              
     
-        out.initialize_export()
+        out.initialize_export()                                                    # create output variables for DOC components, east and west ditch
         print ('Soil hydrology, temperature and DOC models initialized')
     
         ets = np.zeros((length, n))                                                # Evapotranspiration, mm/day
@@ -125,9 +126,9 @@ class Susi():
         scen = spara['scenario name']                                              # scenario name for outputs    
         rounds = len(spara['ditch depth east'])                                    # number of ditch depth scenarios (used in comparison of management)
         
-        stpout = stp.create_outarrays(rounds, length, n)    
+        stpout = stp.create_outarrays(rounds, length, n)                            # create output variables for WT, afp, runoff etc.
         peat_temperatures = pt.create_outarrays(rounds, length, spara['nLyrs'])     # daily peat temperature profiles
-        intercs, evaps, ETs, transpis, efloors, swes = cpy.create_outarrays(rounds, length, n)
+        intercs, evaps, ETs, transpis, efloors, swes = cpy.create_outarrays(rounds, length, n) # outputs for canopy hydrology model
         
         #***********Scenario loop ********************************************************
         

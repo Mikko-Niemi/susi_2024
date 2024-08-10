@@ -29,7 +29,7 @@ class Stand():
         self.nscens = nscens                                                   # number of ditch depth scenarios in the simulation 
         self.yrs = yrs                                                         # number of years in the simulation
         self.photopara = photopara                                             # photosynthesis parameters for the assimilation function (Mäkelä et al. 2008)
-        self.nut_stat = np.ones(ncols) #*0.5                                         # nutrient status, make this an argument
+        self.nut_stat = np.ones(ncols) #*0.5                                   # nutrient status, make this an argument
 
         
         ndominants = np.unique(canopylayers['dominant'])                       # number codes of different dominant layers, number refers to key in mottifiles dictionary, 0 implies no dominant layer

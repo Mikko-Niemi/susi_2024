@@ -224,7 +224,7 @@ class StripHydrology():
         stpout['runoff'] = np.zeros((nrounds,ndays), dtype=float)                        # daily total runoff, here in m, sum of west, east, surface runoff
         stpout['runoffwest'] = np.zeros((nrounds,ndays), dtype=float)                    # daily runoff, here in m, from west ditch
         stpout['runoffeast'] = np.zeros((nrounds,ndays), dtype=float)                    # daily runoff, here in m, from east ditch
-        stpout['surfacerunoff'] = np.zeros((nrounds,ndays, ncols), dtype=float)                 # daily surfacerunoff, here in m, from each column
+        stpout['surfacerunoff'] = np.zeros((nrounds,ndays, ncols), dtype=float)          # daily surfacerunoff, here in m, from each column
 
         return stpout
 

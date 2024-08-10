@@ -17,7 +17,7 @@ class Outputs():
         self.ncf = Dataset(ff, 'w')
         self.ncf.description = "Peatland simulator Susi results"
         self.ncf.history = 'created ' + datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        self.ncf.source = 'Susi v.2022,'
+        self.ncf.source = 'Susi v.2024,'
 
         self.ncf.createDimension('nscens', nscens)                                      # number of management scenarios
         self.ncf.createDimension('ncols', ncols)                                        # number of columns along the strip  
@@ -712,7 +712,7 @@ class Outputs():
         c_to_co2 = 44/12.0  
         self.ncf['balance']['C']['stand_litter_in'][scen, year, :] = (stand.nonwoodylitter + stand.nonwoody_lresid + stand.non_woody_litter_mort
                                                                       + stand.woodylitter + stand.woody_lresid + stand.woody_litter_mort) * bm_to_c
-        self.ncf['balance']['C']['gv_litter_in'][scen, year, :] = groundvegetation.nonwoodylitter *  bm_to_c
+        self.ncf['balance']['C']['gv_litter_in'][scen, year, :] = (groundvegetation.nonwoodylitter + groundvegetation.woodylitter )*  bm_to_c
         self.ncf['balance']['C']['stand_change'][scen, year, :] = stand.biomassgrowth * bm_to_c
         self.ncf['balance']['C']['gv_change'][scen, year, :] = groundvegetation.gv_change * bm_to_c
         self.ncf['balance']['C']['co2c_release'][scen, year, :] = esmass.out * bm_to_c
