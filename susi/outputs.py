@@ -722,11 +722,13 @@ class Outputs():
         self.ncf['balance']['C']['HMW_to_water'][scen, year, :] = esmass.hmwtoditch
         self.ncf['balance']['C']['HMW_to_atm'][scen, year, :] = esmass.hmw - esmass.hmwtoditch
         standbal = (stand.biomassgrowth + groundvegetation.gv_change + stand.nonwoodylitter + stand.nonwoody_lresid +stand.non_woody_litter_mort
-                    + stand.woodylitter + stand.woody_lresid + stand.woody_litter_mort + groundvegetation.nonwoodylitter) * bm_to_c \
+                    + stand.woodylitter + stand.woody_lresid + stand.woody_litter_mort\
+                    + groundvegetation.nonwoodylitter + groundvegetation.woodylitter) * bm_to_c \
                     - esmass.out * bm_to_c - esmass.lmw - esmass.hmw
 
         soilbal = (stand.nonwoodylitter+ stand.nonwoody_lresid  + stand.non_woody_litter_mort
-                    + stand.woodylitter + stand.woody_lresid + stand.woody_litter_mort + groundvegetation.nonwoodylitter) * bm_to_c \
+                    + stand.woodylitter + stand.woody_lresid + stand.woody_litter_mort\
+                    + groundvegetation.nonwoodylitter +  + groundvegetation.woodylitter) * bm_to_c \
                     - esmass.out * bm_to_c - esmass.lmw - esmass.hmw
                     
         self.ncf['balance']['C']['stand_c_balance_c'][scen, year, :] = standbal - ch4*(12/16.0)
