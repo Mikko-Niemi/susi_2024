@@ -10,7 +10,7 @@ def para_ash():
         sites ={
         'ansa_cont':{'wfile': 'muhos_weather.csv','mottifile':'susi_ansa_cont.xlsx', 'ddepth': -0.45, 'Swidth': 40.,
                   'vonP':[6,6,5,4,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':128.7, 'vol':[132.0, 155.0], 
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':128.7, 'vol':[132.0, 155.0], 'drain_age':40,
                   'sfc':3, 'hdom': [13.8,14.4], 'mark':'bo', 'Aini':50, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65, 'LUE_multiplier': 1., 'fertilization': {
                   'application year': 2014,
@@ -21,7 +21,7 @@ def para_ash():
                      
         'ansa_fert_0':{'wfile': 'muhos_weather.csv', 'mottifile':'susi_ansa_fert_0.xlsx','ddepth': -0.45, 'Swidth': 40.,
                   'vonP':[6,6,5,4,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':128.7, 'vol':[129.5,158.3], 
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':128.7, 'vol':[129.5,158.3],  'drain_age':40,
                   'sfc':3, 'hdom': [14.1, 15.1], 'mark':'bo', 'Aini':48, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65, 'LUE_multiplier': 1., 'fertilization': {
                   'application year': 2014,
@@ -32,7 +32,7 @@ def para_ash():
                           
         'ansa_fert_1':{'wfile': 'muhos_weather.csv', 'mottifile':'susi_ansa_fert_1.xlsx','ddepth': -0.45, 'Swidth': 40.,
                   'vonP':[6,6,5,4,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':128.7, 'vol':[129.5,158.3], 
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':128.7, 'vol':[129.5,158.3],  'drain_age':40,
                   'sfc':3, 'hdom': [14.1, 15.1], 'mark':'bo', 'Aini':48, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65, 'LUE_multiplier': 1.0, 'fertilization': {
                   'application year': 2014,
@@ -43,7 +43,7 @@ def para_ash():
 
         'ansa_fert_2':{'wfile': 'muhos_weather.csv', 'mottifile':'susi_ansa_fert_1.xlsx','ddepth': -0.45, 'Swidth': 40.,
                   'vonP':[6,6,5,4,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':128.7, 'vol':[129.5,158.3], 
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':128.7, 'vol':[129.5,158.3],  'drain_age':40,
                   'sfc':3, 'hdom': [14.1, 15.1], 'mark':'bo', 'Aini':48, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65, 'LUE_multiplier': 1.2, 'fertilization': {
                   'application year': 2014,
@@ -54,8 +54,8 @@ def para_ash():
 
         'ansa_fert_3':{'wfile': 'muhos_weather.csv', 'mottifile':'susi_ansa_fert_1.xlsx','ddepth': -0.45, 'Swidth': 40.,
                   'vonP':[6,6,5,4,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':128.7, 'vol':[129.5,158.3], 
-                  'sfc':3, 'hdom': [14.1, 15.1], 'mark':'bo', 'Aini':48, 'depoN': 4.0, 'depoP': 0.1,
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':128.7, 'vol':[129.5,158.3],  'drain_age':40,
+                  'sfc':3, 'hdom': [14.1, 15.1], 'mark':'bo', 'Aini':48, 'depoN': 4.0, 'depoP': 0.1, 
                   'depoK': 0.65, 'LUE_multiplier': 1.2, 'fertilization': {
                   'application year': 2014,
                   'N':{'dose': 0.0, 'decay_k': 0.5, 'eff': 0.3},                              # fertilization dose in kg ha-1, decay_k in yr-1
@@ -66,7 +66,7 @@ def para_ash():
         
         'koira_cont':{'wfile': 'koirasuo_weather.csv', 'mottifile':'susi_koira_cont.xlsx','ddepth': -0.85, 'Swidth': 37.,
                    'vonP':[4,4,5,6,7,7], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31),'bulk dens':108.6, 'vol':[149.0,163.0,], 
+                  'end_date':datetime.datetime(2020,12,31),'bulk dens':108.6, 'vol':[149.0,163.0,], 'drain_age':50,
                   'sfc':2, 'hdom': [13.9, 14.4], 'mark':'bs', 'Aini':92, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65, 'LUE_multiplier': 1.,'fertilization': {
                   'application year': 2014,
@@ -77,7 +77,7 @@ def para_ash():
                       
         'koira_fert_0':{'wfile': 'koirasuo_weather.csv', 'mottifile':'susi_koira_fert_0.xlsx','ddepth': -0.85, 'Swidth': 37.,
                    'vonP':[4,4,5,6,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':108.6, 'vol':[92.0,113.0], 
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':108.6, 'vol':[92.0,113.0], 'drain_age':50,
                   'sfc':2, 'hdom': [14.7, 15.8], 'mark':'rs', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65,'LUE_multiplier': 1., 'fertilization': {
                   'application year': 2014,
@@ -88,7 +88,7 @@ def para_ash():
  
         'koira_fert_1':{'wfile': 'koirasuo_weather.csv', 'mottifile':'susi_koira_fert_1.xlsx','ddepth': -0.85, 'Swidth': 37.,
                    'vonP':[4,4,5,6,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':108.6, 'vol':[92.0,113.0], 
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':108.6, 'vol':[92.0,113.0], 'drain_age':50,
                   'sfc':2, 'hdom': [14.7, 15.8], 'mark':'rs', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65,'LUE_multiplier': 1.0,'fertilization': {
                   'application year': 2014,
@@ -99,7 +99,7 @@ def para_ash():
 
         'koira_fert_2':{'wfile': 'koirasuo_weather.csv', 'mottifile':'susi_koira_fert_1.xlsx','ddepth': -0.85, 'Swidth': 37.,
                    'vonP':[4,4,5,6,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':108.6, 'vol':[92.0,113.0], 
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':108.6, 'vol':[92.0,113.0], 'drain_age':50,
                   'sfc':2, 'hdom': [14.7, 15.8], 'mark':'rs', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65,'LUE_multiplier': 1.2,'fertilization': {
                   'application year': 2014,
@@ -110,7 +110,7 @@ def para_ash():
 
         'koira_fert_3':{'wfile': 'koirasuo_weather.csv', 'mottifile':'susi_koira_fert_1.xlsx','ddepth': -0.85, 'Swidth': 37.,
                    'vonP':[4,4,5,6,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':108.6, 'vol':[92.0,113.0], 
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':108.6, 'vol':[92.0,113.0], 'drain_age':50,
                   'sfc':2, 'hdom': [14.7, 15.8], 'mark':'rs', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65,'LUE_multiplier': 1.2,'fertilization': {
                   'application year': 2014,
@@ -121,7 +121,7 @@ def para_ash():
     
         'neva_cont':{'wfile': 'nevajarvi_weather.csv', 'mottifile':'susi_neva_cont.xlsx','ddepth': -1.03, 'Swidth': 25.,
                   'vonP':[5,5,5,4,4,4], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':113.25, 'vol':[203.0,225.0], 
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':113.25, 'vol':[203.0,225.0], 'drain_age':30,
                   'sfc':3, 'hdom': [16.1, 17.8], 'mark':'b+', 'Aini':105, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65, 'LUE_multiplier': 1.,'fertilization': {
                   'application year': 2014,
@@ -132,7 +132,7 @@ def para_ash():
 
         'neva_fert_0':{'wfile': 'nevajarvi_weather.csv','mottifile':'susi_neva_fert_0.xlsx','ddepth': -1.07, 'Swidth': 30.,
                   'vonP':[4,4,4,4,4,4], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':97.8, 'vol':[118.0, 146.0], 
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':97.8, 'vol':[118.0, 146.0], 'drain_age':30,
                   'sfc':3, 'hdom': [17.3, 18.2], 'mark':'r+', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65, 'LUE_multiplier': 1.,'fertilization': {
                   'application year': 2014,
@@ -143,7 +143,7 @@ def para_ash():
                       
         'neva_fert_1':{'wfile': 'nevajarvi_weather.csv','mottifile':'susi_neva_fert_1.xlsx','ddepth': -1.07, 'Swidth': 30.,
                   'vonP':[4,4,4,4,4,4], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':97.8, 'vol':[118.0, 146.0], 
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':97.8, 'vol':[118.0, 146.0], 'drain_age':30,
                   'sfc':3, 'hdom': [17.3, 18.2], 'mark':'r+', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65, 'LUE_multiplier': 1.0,'fertilization': {
                   'application year': 2014,
@@ -154,7 +154,7 @@ def para_ash():
 
         'neva_fert_2':{'wfile': 'nevajarvi_weather.csv','mottifile':'susi_neva_fert_1.xlsx','ddepth': -1.07, 'Swidth': 30.,
                   'vonP':[4,4,4,4,4,4], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':97.8, 'vol':[118.0, 146.0], 
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':97.8, 'vol':[118.0, 146.0], 'drain_age':30,
                   'sfc':3, 'hdom': [17.3, 18.2], 'mark':'r+', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65, 'LUE_multiplier': 1.2,'fertilization': {
                   'application year': 2014,
@@ -165,7 +165,7 @@ def para_ash():
 
         'neva_fert_3':{'wfile': 'nevajarvi_weather.csv','mottifile':'susi_neva_fert_1.xlsx','ddepth': -1.07, 'Swidth': 30.,
                   'vonP':[4,4,4,4,4,4], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2014,1,1), 
-                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':97.8, 'vol':[118.0, 146.0], 
+                  'end_date':datetime.datetime(2020,12,31), 'bulk dens':97.8, 'vol':[118.0, 146.0], 'drain_age':30,
                   'sfc':3, 'hdom': [17.3, 18.2], 'mark':'r+', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65, 'LUE_multiplier': 1.2,'fertilization': {
                   'application year': 2014,
@@ -182,100 +182,100 @@ def para_ash():
 def para(period='start-end'):
     sites ={
         'start-end':{
-        'ansa21':{'ntubes':6, 'file': 'DWTansa21Interp.csv', 'wfile': 'muhos_weather.csv',
+        'ansa21':{'ntubes':6, 'file': 'DWTansa21Interp.csv', 'wfile': 'muhos_weather.csv',          #drained 1967 -1982 -> 1968
                   'mottifile':'ansa21_A.xls', 'ddepth': -0.45, 'Swidth': 40.,
                   'vonP':[2,3,4,4,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2008,1,1), 
-                  'end_date':datetime.datetime(2014,12,31), 'status': 'wet', 'bulk dens':128.7, 'thinning': False,
+                  'end_date':datetime.datetime(2014,12,31), 'status': 'wet', 'bulk dens':128.7, 'thinning': False, 'drain_age':40,
                   'vol':[140.0, 187.07], 'sfc':3, 'hdom': [12.8,14.6], 'mark':'bo', 'Aini':39, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65},
         'ansa26':{'ntubes':3, 'file': 'DWTansa26Interp.csv', 'wfile': 'muhos_weather.csv',
                   'mottifile':'ansa26_A.xls','ddepth': -0.45, 'Swidth': 40.,
                   'vonP':[2,3,4,4,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2008,1,1), 
-                  'end_date':datetime.datetime(2014,12,31), 'status': 'dry','bulk dens':128.7, 'thinning': False,
+                  'end_date':datetime.datetime(2014,12,31), 'status': 'dry','bulk dens':128.7, 'thinning': False, 'drain_age':40,
                   'vol':[109.9,140.86], 'sfc':3, 'hdom': [12.6, 15.4], 'mark':'bo', 'Aini':39, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.55},
-        'jaakkoin61':{'ntubes':6, 'file': 'DWTjaakkoin61Interp.csv', 'wfile': 'jaakkoinsuo_weather.csv',
+        'jaakkoin61':{'ntubes':6, 'file': 'DWTjaakkoin61Interp.csv', 'wfile': 'jaakkoinsuo_weather.csv',  # drained 1908
                   'mottifile':'jaakkoin61_A.xls','ddepth': -0.85, 'Swidth': 40.,
                   'vonP':[4,8,7,7,7,7], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2007,1,1), 
-                  'end_date':datetime.datetime(2013,12,31), 'status': 'wet','bulk dens':134., 'thinning': False,
+                  'end_date':datetime.datetime(2013,12,31), 'status': 'wet','bulk dens':134., 'thinning': False, 'drain_age':110,
                   'vol':[144.3,172.6], 'sfc':5, 'hdom': [17.6, 18.5], 'mark':'b*', 'Aini':86,'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.95},
         'jaakkoin62':{'ntubes':8, 'file': 'DWTjaakkoin62Interp.csv', 'wfile': 'jaakkoinsuo_weather.csv',
                   'mottifile':'jaakkoin62_A.xls','ddepth': -0.85, 'Swidth': 40.,
                   'vonP':[4,8,7,7,7,7], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2007,1,1), 
-                  'end_date':datetime.datetime(2013,12,31), 'status': 'dry','bulk dens':134., 'thinning': False,
+                  'end_date':datetime.datetime(2013,12,31), 'status': 'dry','bulk dens':134., 'thinning': False, 'drain_age':110,
                   'vol':[149.3,186.6], 'sfc':5, 'hdom': [18.1, 19.5], 'mark':'b*', 'Aini':86, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.95},
-        'koira11':{'ntubes':3, 'file': 'DWTkoira11Interp.csv', 'wfile': 'koirasuo_weather.csv',
+        'koira11':{'ntubes':3, 'file': 'DWTkoira11Interp.csv', 'wfile': 'koirasuo_weather.csv',               
                   'mottifile':'koira11_A.xls','ddepth': -0.85, 'Swidth': 37.,
                    'vonP':[4,4,5,6,7,7], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2008,1,1), 
-                  'end_date':datetime.datetime(2014,12,31), 'status': 'wet','bulk dens':108.6, 'thinning': False,
+                  'end_date':datetime.datetime(2014,12,31), 'status': 'wet','bulk dens':108.6, 'thinning': False, 'drain_age':55,  #drained 1950
                   'vol':[90.9,122.], 'sfc':2, 'hdom': [12.9, 13.9], 'mark':'bs', 'Aini':76, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65},
         'koira12':{'ntubes':3, 'file': 'DWTkoira12Interp.csv', 'wfile': 'koirasuo_weather.csv',
                   'mottifile':'koira12_A.xls','ddepth': -0.85, 'Swidth': 37.,
                    'vonP':[4,4,5,6,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2008,1,1), 
-                  'end_date':datetime.datetime(2014,12,31), 'status': 'dry','bulk dens':108.6, 'thinning': False,
+                  'end_date':datetime.datetime(2014,12,31), 'status': 'dry','bulk dens':108.6, 'thinning': False, 'drain_age':55,
                   'vol':[122.9,164.], 'sfc':2, 'hdom': [13.2,16.4], 'mark':'bs', 'Aini':76, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65},       
         'koira21':{'ntubes':3, 'file': 'DWTkoira21Interp.csv', 'wfile': 'koirasuo_weather.csv',
                   'mottifile':'koira21_harvennus_A.xls','ddepth': -0.85, 'Swidth': 37.,
                    'vonP':[4,4,5,6,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2008,1,1), 
-                  'end_date':datetime.datetime(2009,12,31), 'status': 'wet','bulk dens':108.6, 'thinning': True,
+                  'end_date':datetime.datetime(2009,12,31), 'status': 'wet','bulk dens':108.6, 'thinning': True, 'drain_age':55,
                   'vol':[97.4,91.9+30.6], 'sfc':2, 'hdom': [12.7, 14.5], 'mark':'rs', 'Aini':76, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65},        
         'koira22':{'ntubes':3, 'file': 'DWTkoira22Interp.csv', 'wfile': 'koirasuo_weather.csv',
                   'mottifile':'koira22_harvennus_A.xls','ddepth': -0.85, 'Swidth': 37.,
                    'vonP':[4,4,5,6,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2008,1,1), 
-                  'end_date':datetime.datetime(2009,12,31), 'status': 'dry','bulk dens':108.6, 'thinning': True,
+                  'end_date':datetime.datetime(2009,12,31), 'status': 'dry','bulk dens':108.6, 'thinning': True, 'drain_age':55,
                   'vol':[92.2,87.13+33.92], 'sfc':2, 'hdom': [11.1,14.3], 'mark':'rs', 'Aini':76, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.95},
         'neva11':{'ntubes':6, 'file': 'DWTneva11Interp.csv', 'wfile': 'nevajarvi_weather.csv',
                   'mottifile':'neva11_A.xls','ddepth': -1.03, 'Swidth': 30.,
                   'vonP':[5,5,5,4,4,4], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2007,1,1), 
-                  'end_date':datetime.datetime(2014,12,31), 'status': 'dry','bulk dens':113.25, 'thinning': False,
+                  'end_date':datetime.datetime(2014,12,31), 'status': 'dry','bulk dens':113.25, 'thinning': False, 'drain_age':55, #drainage 2. times 1950
                   'vol':[163.4,227.5], 'sfc':3, 'hdom': [16.1, 17.8], 'mark':'b+', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65},
         'neva14':{'ntubes':6, 'file': 'DWTneva14Interp.csv', 'wfile': 'nevajarvi_weather.csv',
                   'mottifile':'neva14_A.xls', 'ddepth': -1.03, 'Swidth': 30.,
                   'vonP':[5,5,5,4,4,4], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2007,1,1), 
-                  'end_date':datetime.datetime(2014,12,31), 'status': 'wet','bulk dens':113.25, 'thinning': False,
+                  'end_date':datetime.datetime(2014,12,31), 'status': 'wet','bulk dens':113.25, 'thinning': False, 'drain_age':55,
                   'vol': [142.9, 191.4], 'sfc':3, 'hdom': [16.5, 18.4], 'mark':'b+', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65},
         'neva21':{'ntubes':7, 'file': 'DWTneva21Interp.csv', 'wfile': 'nevajarvi_weather.csv',
                   'mottifile':'neva21_harvennus_A.xls','ddepth': -1.07, 'Swidth': 30.,
                   'vonP':[4,4,4,4,4,4], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2007,1,1), 
-                  'end_date':datetime.datetime(2008,12,31), 'status': 'dry','bulk dens':97.8, 'thinning': True,
+                  'end_date':datetime.datetime(2008,12,31), 'status': 'dry','bulk dens':97.8, 'thinning': True, 'drain_age':55,
                   'vol':[100.32, 109.89+32.5], 'sfc':3, 'hdom': [15.7, 16.7], 'mark':'r+', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65},   
         'neva24':{'ntubes':6, 'file': 'DWTneva24Interp.csv', 'wfile': 'nevajarvi_weather.csv',
                   'mottifile':'neva24_harvennus_A.xls','ddepth': -1.07, 'Swidth': 30.,
                   'vonP':[4,4,4,4,4,4], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2007,1,1), 
-                  'end_date':datetime.datetime(2008,12,31), 'status': 'wet','bulk dens':97.8, 'thinning': True,
+                  'end_date':datetime.datetime(2008,12,31), 'status': 'wet','bulk dens':97.8, 'thinning': True, 'drain_age':55,
                   'vol':[143.6, 124.7+53.66], 'sfc':3, 'hdom': [14.6, 17.1], 'mark':'r+', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65},
         'neva31':{'ntubes':10, 'file': 'DWTneva31Interp.csv', 'wfile': 'nevajarvi_weather.csv',
                   'mottifile':'neva31_A.xls', 'ddepth': -1.08, 'Swidth': 30.,
                   'vonP':[5,5,4,5,5,5], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2007,1,1), 
-                  'end_date':datetime.datetime(2014,12,31), 'status': 'dry','bulk dens':122.5, 'thinning': False,
+                  'end_date':datetime.datetime(2014,12,31), 'status': 'dry','bulk dens':122.5, 'thinning': False, 'drain_age':55,
                   'vol':[127.2, 161.5], 'sfc':3, 'hdom': [16.5, 17.0], 'mark':'b+', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65},
         'neva34':{'ntubes':10, 'file': 'DWTneva34Interp.csv', 'wfile': 'nevajarvi_weather.csv',
                   'mottifile':'neva34_A.xls','ddepth': -1.08, 'Swidth': 30.,
                   'vonP':[5,5,4,5,5,5], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2007,1,1), 
-                  'end_date':datetime.datetime(2014,12,31), 'status': 'wet','bulk dens':122.5, 'thinning': False,
+                  'end_date':datetime.datetime(2014,12,31), 'status': 'wet','bulk dens':122.5, 'thinning': False, 'drain_age':55,
                   'vol':[100.4, 147.3], 'sfc':3, 'hdom': [15.3,17.1], 'mark':'b+', 'Aini':80, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.65},
         'parkano11':{'ntubes':12, 'file': 'DWTparkano11Interp.csv', 'wfile': 'parkano_weather.csv',
                   'mottifile':'parkano11_A.xls','ddepth': -0.86, 'Swidth': 65.,
                   'vonP':[3,3,6,6,6,6], 'ptype':['S','S','S','S','S','S'], 'start_date':datetime.datetime(2007,1,1), 
-                  'end_date':datetime.datetime(2011,12,31), 'status': 'dry','bulk dens':99.35, 'thinning': False,
+                  'end_date':datetime.datetime(2011,12,31), 'status': 'dry','bulk dens':99.35, 'thinning': False, 'drain_age':80, # drained first 1930s, Häädetjärvi 1950s
                   'vol':[167.7, 192.4], 'sfc':3, 'hdom': [17.3, 18.7], 'mark':'bD', 'Aini':130, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.95},
         'parkano12':{'ntubes':14, 'file': 'DWTparkano12Interp.csv', 'wfile': 'parkano_weather.csv',
                   'mottifile':'parkano12_harvennus_A.xls','ddepth': -0.89, 'Swidth': 65.,
                   'vonP':[3,5,6,6,6,6], 'ptype':['A','A','A','A','A','A'], 'start_date':datetime.datetime(2007,1,1), 
-                  'end_date':datetime.datetime(2009,12,31), 'status': 'wet','bulk dens':99.35, 'thinning': True,
+                  'end_date':datetime.datetime(2009,12,31), 'status': 'wet','bulk dens':99.35, 'thinning': True, 'drain_age':80,
                   'vol':[263., 173.+112.9], 'sfc':5, 'hdom': [20.0, 20.7], 'mark':'rD', 'Aini':130, 'depoN': 4.0, 'depoP': 0.1,
                   'depoK': 0.95},
 

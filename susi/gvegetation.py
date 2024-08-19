@@ -95,8 +95,11 @@ class Gvegetation():
         self.nut_con ={'description': 'nutrient concentration of dwarf shrubs (ds), herbs & grasses (h), upland mosses (um), and sphagna (s), unit mg/g',
                   'ds':{'N':12.0, 'P':1.0, 'K': 4.7}, 'h':{'N':18.0, 'P':2.0, 'K': 15.1}, 'um':{'N':12.5, 'P':1.4, 'K':4.3}, 
                   's':{'N':6.0, 'P':1.4, 'K':4.3}}
+        #self.lit_share = {'description': 'share of living biomass that is lost as litter annually for dwarf shrubs (ds), herbs & grasses (h), upland mosses (um), and sphagna (s), unit: kg kg-1',
+        #           'ds': 0.15, 'h': 0.5, 'um': 0.3, 's': 0.3}  # see Ojanen et al 2013 Forest Ecology and Management 289 (2013) 201–208
         self.lit_share = {'description': 'share of living biomass that is lost as litter annually for dwarf shrubs (ds), herbs & grasses (h), upland mosses (um), and sphagna (s), unit: kg kg-1',
-                   'ds': 0.2, 'h': 0.5, 'um': 0.3, 's': 0.3}
+                   'ds': 0.33, 'h': 1.0, 'um': 0.3, 's': 0.3}  # see Ojanen et al 2013 Forest Ecology and Management 289 (2013) 201–208
+        
         self.green_share = {'description': 'share of green mass from the total biomass of dwarf shrubs (ds), herbs & grasses (h), upland mosses (um), and sphagna (s), unit kg/kg',
                        'ds': 0.2, 'h': 0.5, 'um': 0.3, 's': 0.3}
         self.retrans ={'description': 'share of nutrients retranslocated before litterfallfor dwarf shrubs (ds), herbs & grasses (h), upland mosses (um), and sphagna (s), unit: kg kg-1',
@@ -106,8 +109,10 @@ class Gvegetation():
         #ATTN: changes 4.1.2021 fl_share pine_bog vs spruce_mire (vice versa)
         #check, and change back restranslocation for herbs 
         
-        self.fl_to_total_turnover = 1.2    # converts the turnover of above-ground bionmass to total including root turnover
-        self.fl_above_to_total = 1.7       # converts aboveground biomass to total biomass 
+        #self.fl_to_total_turnover = 1.2    # converts the turnover of above-ground bionmass to total including root turnover
+        #self.fl_above_to_total = 1.7       # converts aboveground biomass to total biomass 
+        self.fl_to_total_turnover = 1.5    # converts the turnover of above-ground bionmass to total including root turnover
+        self.fl_above_to_total = 1.9       # converts aboveground biomass to total biomass 
             
         # ------------------- SITE PARAMETERS-------------------------------------------------------
         self.n = n 

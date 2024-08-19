@@ -29,6 +29,7 @@ sites =['ansa21', 'ansa26', 'jaakkoin61', 'jaakkoin62', 'koira11', 'koira12',
 params = para(period='start-end')
 
 
+
 for s in sites:
     if not params[s]['thinning']: 
         print (s)
@@ -97,6 +98,23 @@ for s in sites:
         spara['depoN'] = params[s]['depoN']       #
         spara['depoP'] = params[s]['depoP']      #+dry deposition Ruoho-Airola et al 2015
         spara['depoK'] = params[s]['depoK'] * 1.1   #1.1 +dry deposition  Ruoho-Airola et al 2003 
+
+        mass_mor = 1.616*np.log(params[s]['drain_age'])-1.409     #Pitkänen et al. 2012 Forest Ecology and Management 284 (2012) 100–106
+        spara['anisotropy'] = 10
+        if params[s]['sfc'] < 3:
+            spara['rho_mor'] = 110.0
+        elif params[s]['sfc'] == 3:
+            spara['rho_mor'] = 100.0
+        elif params[s]['sfc'] == 4:
+            spara['rho_mor'] = 85.0            
+        elif params[s]['sfc'] == 5:
+            spara['rho_mor'] = 80.0
+        else:           
+            spara['rho_mor'] = 60.0
+
+        #spara['rho_mor'] = 90
+        spara['h_mor'] = mass_mor/ spara['rho_mor']          
+        print (s, mass_mor)
         
         susi_c = Susi()
         susi_c.run_susi(forc, wpara, cpara, org_para, spara, outpara, photopara, start_yr, end_yr, wlocation = 'undefined', 

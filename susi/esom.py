@@ -1,4 +1,4 @@
-    # -*- coding: utf-8 -*-
+    # -*- coing: utf-8 -*-
 """
 Created on Wed Feb  9 10:41:03 2022
 
@@ -52,7 +52,7 @@ class Esom():
         self.contpara = {'Mass': {2: {1:100., 2:100}, 3: {1:100., 2:100}, 4: {1:100., 2:100}, 5: {1:100., 2:100}},        # Content of mass, N, P, K in peat, unit gravimettric %
                     'N':{2: {1:1.9, 2:1.9}, 3: {1:1.6, 2:1.6}, 4: {1:1.4, 2:1.4}, 5: {1:1.2, 2:1.2}},                # Unit gravimetric % Mese study           
                     'P':{2: {1:0.1,2:0.1}, 3: {1:0.08, 2:0.08}, 4: {1:0.06, 2:0.06}, 5: {1:0.05, 2:0.05}}, 
-                    'K':{2: {1:0.045, 2:0.045}, 3: {1:0.04, 2:0.038}, 4: {1:0.037, 2:0.034}, 5: {1:0.03, 2:0.03}}    
+                    'K':{2: {1:0.045, 2:0.045}, 3: {1:0.04, 2:0.038}, 4: {1:0.037, 2:0.034}, 5: {1:0.032, 2:0.032}}    
                     #'K':{2: {1:0.047, 2:0.047}, 3: {1:0.042, 2:0.040}, 4: {1:0.039, 2:0.036}, 5: {1:0.032, 2:0.032}}    
                     
                     }
@@ -68,9 +68,9 @@ class Esom():
         self.enable_peatmiddle = spara['enable_peatmiddle']
         self.enable_peatbottom = spara['enable_peatbottom']
         
-        self.contpara_mor = {'Mass': 100.0, 'N': 1.5, 'P': 0.05, 'K': 0.03}         # Initial concentration of mass components in mor layer, gravimetric %
+        self.contpara_mor = {'Mass': 100.0, 'N': 1.5, 'P': 0.099, 'K': 0.089}         # Initial concentration of mass components in mor layer, gravimetric %, Tammjinen et al. Plant and Soil 259: 51–58, 2004.
     
-        self.dph = {1:3.5, 2:3.4, 3:3.3, 4:3.2, 5:3.1, 6:3.0}                      # pH according to site fertility class
+        self.dph = {1:3.9, 2:3.8, 3:3.5, 4:3.2, 5:3.1, 6:3.0}                      # pH according to site fertility class
     
         #------------These from spara dictionary
         x=1; y=spara['n']                          # shape of the domain    
@@ -162,8 +162,8 @@ class Esom():
     
       #def lignin_corrections(self, nitrogen = 0.7, lignin = 25.0):
           #N contents, branches Skonieczna,et al 2014 unit %
-          #Lignin contents Kilpeläinen et al. 2003 unit %
-        nitrogen = 0.7; lignin = 25.0
+          #Lignin contents Kilpeläinen et al. 2003 unit 25 %
+        nitrogen = 0.5; lignin = 25.0
         adjust = 1. #2. #4.
         self.mu_k1 = 0.092 * (lignin / nitrogen)**-0.7396 * adjust
         self.mu_k2 = 0.0027 * (lignin / nitrogen)**-0.3917 * adjust
@@ -183,8 +183,8 @@ class Esom():
           frac_L = 0.1                                            # Share of undecomposed litter (L) from the mor thickness (fraction 0...1)
           frac_F = 0.2                                            # Share of partly decomposed F material from the mor thickness (fraction 0...1)
           frac_H = 0.7                                            # Share of humified H material from the mor thickness (fraction 0...1)
-          frac_leaf = 0.5                                         # Share of non-woody material from L and F material (fraction 0...1)
-          frac_woody = 0.5                                        # Share of non-woody material from L and F material (fraction 0...1)
+          frac_leaf = 0.2                                         # Share of non-woody material from L and F material (fraction 0...1)
+          frac_woody = 0.8                                        # Share of non-woody material from L and F material (fraction 0...1)
     
           LL_mass = h_mor*frac_L*rho_mor * frac_leaf * self.contpara_mor[self.substance] / 100.
           LW_mass = h_mor*frac_L*rho_mor * frac_woody* self.contpara_mor[self.substance] / 100.
@@ -252,7 +252,9 @@ class Esom():
           k5= 0.007 * self.t5(tair) * self.phi5(wn)
           
           #k6= 0.006 * self.t6(tp_top) * self.phi1236(wn)     # Chertov 1998 SOMM
-          k6= 0.0006 * self.t6(tp_top) * self.phi1236(wn) #* 0.5
+          #k6= 0.0006 * self.t6(tp_top) * self.phi1236(wn) #* 0.5
+          k6= 0.001 * self.t6(tp_top) * self.phi1236(wn)*nu #* 0.5
+          
           #k6= 0.0006*self.t6(tp_top)*H_w 
           
           #THESE can be modified by you

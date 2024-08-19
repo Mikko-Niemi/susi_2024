@@ -97,7 +97,7 @@ def get_susi_para(wlocation=None, peat=None, photosite='All data', folderName=No
         'ditch depth 20y west': [-0.3, -0.6,  -0.9],                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
         'ditch depth 20y east': [-0.3, -0.6,  -0.9],                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
         'scenario name': ['D30', 'D60', 'D90' ],                                #kasvunlisaykset
-
+        'drain_age': 50,
         'initial h': -0.2, 'slope': 0.0, 
         'peat type':['A','A','A','A','A','A','A','A'], 
         'peat type bottom':['A'],'anisotropy':10.,
@@ -108,8 +108,8 @@ def get_susi_para(wlocation=None, peat=None, photosite='All data', folderName=No
         'peatN':peatN, 'peatP':peatP, 'peatK':peatK,
         'enable_peattop': True, 'enable_peatmiddle': True,
         'enable_peatbottom': True,
-        'h_mor': 0.04,                                                         # depth of mor layer, m
-        'rho_mor': 100.0,                                                      # bulk density of mor layer, kg m-3
+        'h_mor': 0.03,                                                         # depth of mor layer, m
+        'rho_mor': 80.0,                                                      # bulk density of mor layer, kg m-3
         'depoN': 4.0, 'depoP':0.1, 'depoK':1.0,
         'fertilization': {
                 'application year': 2201,
@@ -147,8 +147,8 @@ def get_susi_para(wlocation=None, peat=None, photosite='All data', folderName=No
         'peatN':peatN, 'peatP':peatP, 'peatK':peatK,
         'enable_peattop': True, 'enable_peatmiddle': True,
         'enable_peatbottom': True,
-        'h_mor': 0.04,                                                         # depth of mor layer, m
-        'rho_mor': 100.0,                                                      # bulk density of mor layer, kg m-3
+        'h_mor': 0.01,                                                         # depth of mor layer, m
+        'rho_mor': 80.0,                                                      # bulk density of mor layer, kg m-3
         'depoN': 4.0, 'depoP':0.1, 'depoK':1.0,
         'fertilization': {
                 'application year': 2201,
