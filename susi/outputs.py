@@ -469,6 +469,13 @@ class Outputs():
         stand_c_balance_co2eq.units = 'stand C balance in CO2-equivalents [kg/ha/yr]'
         soil_c_balance_co2eq= self.ncf.createVariable('/balance/C/soil_c_balance_co2eq','f4',('nscens','nyrs', 'ncols',))
         soil_c_balance_co2eq.units = 'soil C balance in CO2-equivalents [kg/ha/yr]'
+
+
+    def initialize_ojanen(self):
+        Rhet = self.ncf.createVariable('/ojanen/Rhet','f4',('nscens','nyrs', 'ncols',))
+        Rhet.units = 'annual CO2 emission from each node [kg/ha/yr], according to Ojanen et al. 2010'
+        soil_co2_balance = self.ncf.createVariable('/ojanen/soil_co2_balance','f4',('nscens','nyrs', 'ncols',))
+        soil_co2_balance.units = 'annual CO2 emission from each node [kg/ha/yr], according to Ojanen et al. 2010'
         
 #****************************************************************************************************        
 #                      WRITING FUNCTIONS
@@ -736,3 +743,6 @@ class Outputs():
         self.ncf['balance']['C']['stand_c_balance_co2eq'][scen, year, :] = standbal * c_to_co2 - ch4*54.0
         self.ncf['balance']['C']['soil_c_balance_co2eq'][scen, year, :] = soilbal * c_to_co2 - ch4*54.0
         
+    def write_ojanen(self, scen, year, Rhet, soil_co2_balance):
+        self.ncf['ojanen']['Rhet'] [scen, year, :] = Rhet
+        self.ncf['ojanen']['soil_co2_balance'][scen, year, :]  = soil_co2_balance

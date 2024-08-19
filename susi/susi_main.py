@@ -22,7 +22,7 @@ from susi.outputs import Outputs
 
 from susi.susi_io import print_site_description
 from susi.susi_utils import  rew_drylimit
-from susi.susi_utils import  get_temp_sum
+from susi.susi_utils import  get_temp_sum, heterotrophic_respiration_yr, ojanen_2019
 
 class Susi():
     def __init(self):
@@ -32,10 +32,12 @@ class Susi():
                  photosite=None, folderName=None, hdomSim=None, volSim=None, ageSim=None, 
                  sarkaSim=None, sfc=None, susiPath=None, simLAI=None, kaista=None, sitename=None): 
         
-        print ('******** Susi-peatland simulator v.10 (2022) c Annamari Laurén *********************')
+        print ('******** Susi-peatland simulator v.11 (2024) c Annamari Laurén *********************')
         print ('           ')    
         print ('Initializing stand and site:') 
-         
+        
+        switches={'Ojanen2010_2019':True}
+    
         dtc = cpara['dt']                                                          # canopy model timestep
     
         start_date = datetime.datetime(start_yr,1,1)                               # simulation start date
@@ -92,7 +94,9 @@ class Susi():
         out.initialize_nutrient_balance('P')
         out.initialize_nutrient_balance('K')
         out.initialize_carbon_balance()
-            
+        
+        if switches['Ojanen2010_2019']:
+            out.initialize_ojanen()
         #********* Above ground hydrology initialization ***************
         cmask = np.ones(spara['n'])                                                # compute canopy and moss for each soil column (0, and n-1 are ditches)
         cstate = cpara['state'].copy()
@@ -235,6 +239,12 @@ class Susi():
                 out.write_strip(r, start, days, yr, year+1, dfwt, stpout, outpara, stp)            
                 
             # **************  Biogeochemistry ***********************************
+                if switches['Ojanen2010_2019']:
+                    v = stand.volume 
+                    _, co2, Rhet = heterotrophic_respiration_yr(df_peat_temperatures, yr, dfwt, v, spara)            # Rhet is total annual heterotrophic respiration in kg/ha/yr CO2, per computation node  
+                    soil_co2_balance = ojanen_2019 (spara, yr, dfwt)
+                    out.write_ojanen(r, year+1, Rhet, soil_co2_balance)
+
                 groundvegetation.run(stand.basalarea, stand.stems, stand.volume,\
                                      stand.dominant.species, ts, ageSim['dominant'])
     

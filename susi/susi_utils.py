@@ -1125,7 +1125,45 @@ def assimilation_yr(ppara, dfforc, wt, afp, LAI, LAI_above):
         
     return npp_arr*10., npp_arr_pot*10.    #kg/ha organic matter
 
-def heterotrophic_respiration_yr(t5, yr, dfwt, dfair_r, v, spara):
+
+def heterotrophic_respiration_yr(t5, yr, dfwt, v, spara):
+        """
+        Output: 
+            mean time series kg CO2 ha-1 day-1 and annual sum for each computation  node 
+        """
+        sfc = np.median(spara['sfc'])        
+        #peat bulk density: change from g/cm3 to kg m-3 -> multiply by 1000
+        bd_d = {2: 0.14, 3: 0.11, 4: 0.10, 5: 0.08}           # Mese study: bulk densities in different fertility classes                                                                 # peat layer thickness, cm            
+        
+        if spara['bd top'] is None:
+            bd = bd_d[sfc]*1000.0
+        else:
+            bd = np.mean(spara['bd top'])*1000.0               #Unit conversion from g/cm3 -> kg/m3
+
+        wt = dfwt[str(yr)+'-05-01':str(yr)+'-10-31'].mean().values*-100.     #.values[:-1])
+        
+        T5 = t5.loc[str(yr)][0]
+        
+        B = 350. ; T5zero = -46.02; T5ref = 10.
+        T5 = np.minimum(T5, 16.)
+        Rref = (0.0695+3.7*10**(-4)*v +5.4*10**(-4)*bd + 1.2*10**(-3)*wt)*24.    #unit g/m2/h CO2-> g/m2/day
+        Rhet = [rref*np.exp(B*((1./(T5ref-T5zero))-(1./(T5-T5zero)))) for rref in Rref]          
+        Rhet = np.array(Rhet).T
+        #Rhet_root = Rhet*air_ratio              
+        n, days = np.shape(Rhet)
+    
+        return days, np.mean(Rhet, axis=1)*10., np.sum(Rhet, axis=0)*10. #, np.sum(Rhet_root, axis=0)*10.       
+
+def ojanen_2019 (spara, yr, dfwt):
+    wts  = dfwt[str(yr)+'-05-01':str(yr)+'-10-31'].mean().values*-100.     #.values[:-1])
+    sfc = np.median(spara['sfc'])
+    if sfc < 3:
+        soil_co2_balance = (-115 + 12 * wts) *10 *-1      # conversion from g/m2/yr to kg co2/ha/ yr and sign conversion: source negative; sink positive
+    else:
+        soil_co2_balance = (-259 + 6 * wts) * 10 *-1
+    return soil_co2_balance
+
+def heterotrophic_respiration_yr_bck(t5, yr, dfwt, dfair_r, v, spara):
         """
         Output: 
             mean time series kg CO2 ha-1 day-1 and annual sum for each computation  node 
@@ -1154,7 +1192,9 @@ def heterotrophic_respiration_yr(t5, yr, dfwt, dfair_r, v, spara):
     
         return days, np.mean(Rhet, axis=1)*10., np.sum(Rhet, axis=0)*10., np.sum(Rhet_root, axis=0)*10.       
 
-def heterotrophic_respiration_yr_bck(forc, yr, dfwt, dfair_r, v, spara):
+
+
+def heterotrophic_respiration_yr_bck2(forc, yr, dfwt, dfair_r, v, spara):
         """
         Output: 
             mean time series kg CO2 ha-1 day-1 and annual sum for each computation  node 

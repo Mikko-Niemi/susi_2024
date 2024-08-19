@@ -63,11 +63,11 @@ if np.median(sfc) > 4:
     spara['peat type']=['S','S','S','S','S','S','S','S']
     spara['peat type bottom']=['A']
     spara['vonP top'] =  [2,5,5,5,6,6,7,7] 
-    spara['anisotropy'] = 2
+    spara['anisotropy'] = 10
     spara['rho_mor'] = 80.0
 else:
     spara['vonP top'] =  [2,5,5,5,6,6,7,7] 
-    spara['anisotropy'] = 2
+    spara['anisotropy'] = 10
     spara['rho_mor'] = 90.0
     
 spara['h_mor'] = mass_mor/ spara['rho_mor'] 
