@@ -520,6 +520,7 @@ class Outputs():
         self.ncf['stand']['nut_stat'][scen, year, :] = stand.nut_stat
         
         self.ncf['stand']['woody_litter_mort'][scen, year, :] = stand.woody_litter_mort
+        
         self.ncf['stand']['n_woody_litter_mort'][scen, year, :] = stand.n_woody_litter_mort
         self.ncf['stand']['p_woody_litter_mort'][scen, year, :] = stand.p_woody_litter_mort
         self.ncf['stand']['k_woody_litter_mort'][scen, year, :] = stand.k_woody_litter_mort

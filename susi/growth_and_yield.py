@@ -417,13 +417,13 @@ class Growth_and_Yield_Table():
             DBH_classes[kd] = DBH_classes[nd] + self.predict_diameter_increment_5_years(DBH_classes[nn], DBH_classes['speciesid'], DBH_classes[nd], fertility_class, DDY)
             Hdom = self.naslund_to_hdom(DBH_classes[kd], DBH_classes[kn], species)
             
-            import matplotlib.pyplot as plt
-            plt.plot(DBH_classes[kd], DBH_classes[kn], label=kn)
-            plt.legend(loc='upper right')
-            print ('mean para', kh, Hdom)
+            #import matplotlib.pyplot as plt
+            #plt.plot(DBH_classes[kd], DBH_classes[kn], label=kn)
+            #plt.legend(loc='upper right')
+            #print ('mean para', kh, Hdom)
             
             DBH_classes[kh] = self.naslund_height(DDY, Hdom, DBH_classes[kd], np.sum(DBH_classes[kn] * np.pi * np.square(DBH_classes[kd]/2./100.)), species)
-            print ('specific', kh, self.dominant_height(DBH_classes[kn], DBH_classes[kh]))
+            #print ('specific', kh, self.dominant_height(DBH_classes[kn], DBH_classes[kh]))
             assortments = self.getAssortmentVolumes(DBH_classes[kd], DBH_classes[kh], DBH_classes['speciesid'])
             DBH_classes[kv] = assortments['total']
             DBH_classes[kl] = assortments['log']        
@@ -481,7 +481,7 @@ gy = Growth_and_Yield_Table(G, N, Dg, D, Hg, Hdom, DDY, species, fertility_class
 age_ini = 35
 
 b,c =  gy.recover_weibull(Dg,N,G)
-print(b,c)
+#print(b,c)
 
 susi_input = gy.get_table(age_ini)
 susi_input.to_clipboard()

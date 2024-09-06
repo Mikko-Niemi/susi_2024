@@ -522,6 +522,13 @@ for k in (sites):
     
     esom_co2 = ncf['esom']['Mass']['co2'][0,:, 1:-1]/10. #kg ha-1 yr-1 ->g m-2 yr-1
     
+    ojanen_2019 = np.mean(ncf['ojanen']['soil_co2_balance'][0, :, 1:-1])
+    soil_bal = np.mean(ncf['balance']['C']['stand_litter_in'] [0, :, 1:-1]\
+                     + ncf['balance']['C']['gv_litter_in'] [0, :, 1:-1]\
+                    - ncf['balance']['C']['co2c_release'][0, :, 1:-1])* 44/12
+
+    print (k, ojanen_2019, soil_bal)
+    
     ncf.close()
     empirical = np.zeros(np.shape(dwt))
     for n, yr in enumerate(range(sday.year, end_date.year+1)):
