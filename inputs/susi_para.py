@@ -109,7 +109,9 @@ def get_susi_para(wlocation=None, peat=None, photosite='All data', folderName=No
         'enable_peattop': True, 'enable_peatmiddle': True,
         'enable_peatbottom': True,
         'h_mor': 0.03,                                                         # depth of mor layer, m
-        'rho_mor': 80.0,                                                      # bulk density of mor layer, kg m-3
+        'rho_mor': 80.0,                                                       # bulk density of mor layer, kg m-3
+        'cutting_yr': 2058,                                                    # year for cutting
+        'cutting_to_ba':12,                                                    # basal area after cutting, m2/ha
         'depoN': 4.0, 'depoP':0.1, 'depoK':1.0,
         'fertilization': {
                 'application year': 2201,
@@ -149,6 +151,8 @@ def get_susi_para(wlocation=None, peat=None, photosite='All data', folderName=No
         'enable_peatbottom': True,
         'h_mor': 0.01,                                                         # depth of mor layer, m
         'rho_mor': 80.0,                                                      # bulk density of mor layer, kg m-3
+        'cutting_yr': 2058,                                                    # year for cutting
+        'cutting_to_ba':12,                                                    # basal area after cutting, m2/ha
         'depoN': 4.0, 'depoP':0.1, 'depoK':1.0,
         'fertilization': {
                 'application year': 2201,
@@ -185,6 +189,8 @@ def get_susi_para(wlocation=None, peat=None, photosite='All data', folderName=No
         'enable_peatbottom': False,
         'h_mor': 0.04,                                                         # depth of mor layer, m
         'rho_mor': 100.0,                                                      # bulk density of mor layer, kg m-3
+        'cutting_yr': 2058,                                                    # year for cutting
+        'cutting_to_ba':12,                                                    # basal area after cutting, m2/ha
         'depoN': 4.0, 'depoP':0.1, 'depoK':1.0,
         'fertilization': {
                 'application year': 2201,
@@ -221,6 +227,8 @@ def get_susi_para(wlocation=None, peat=None, photosite='All data', folderName=No
         'enable_peatbottom': True,
         'h_mor': 0.04,                                                         # depth of mor layer, m
         'rho_mor': 100.0,                                                      # bulk density of mor layer, kg m-3
+        'cutting_yr': 2058,                                                    # year for cutting
+        'cutting_to_ba':12,                                                    # basal area after cutting, m2/ha
         'depoN': 4.0, 'depoP':0.1, 'depoK':1.0,
         'fertilization': {
                 'application year': 2201,
