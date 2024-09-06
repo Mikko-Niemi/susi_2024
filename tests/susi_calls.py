@@ -56,6 +56,7 @@ wpara, cpara, org_para, spara, outpara, photopara = get_susi_para(wlocation='und
                                                                           n=n)
 #spara['canopylayers']['dominant'][int(n/2):] = 2                                                                        
 #spara['canopylayers']['subdominant'][:int(n/2)] = 1                                                                        
+spara['cutting_yr'] = 2058
 spara['drain_age'] =  100.
 mass_mor = 1.616*np.log(spara['drain_age'])-1.409     #Pitkänen et al. 2012 Forest Ecology and Management 284 (2012) 100–106
 
@@ -70,6 +71,7 @@ else:
     spara['anisotropy'] = 10
     spara['rho_mor'] = 90.0
     
+
 spara['h_mor'] = mass_mor/ spara['rho_mor'] 
 
 spara['ditch depth west'] = [-0.5]   #nLyrs kerrosten lkm, dzLyr kerroksen paksuus m, saran levys m, n laskentasolmulen lukumäärä, ditch depth pjan syvyys simuloinnin alussa m  
