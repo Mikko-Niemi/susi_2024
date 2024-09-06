@@ -56,7 +56,7 @@ wpara, cpara, org_para, spara, outpara, photopara = get_susi_para(wlocation='und
                                                                           n=n)
 #spara['canopylayers']['dominant'][int(n/2):] = 2                                                                        
 #spara['canopylayers']['subdominant'][:int(n/2)] = 1                                                                        
-spara['cutting_yr'] = 2058
+spara['cutting_yr'] = 2001
 spara['drain_age'] =  100.
 mass_mor = 1.616*np.log(spara['drain_age'])-1.409     #Pitkänen et al. 2012 Forest Ecology and Management 284 (2012) 100–106
 

@@ -447,26 +447,26 @@ class Canopylayer():
                     print ('******** Now cutting to: ' , to_ba)
                     print (self.name)
                     print ('basal area')
-                    print (self.basalarea*self.stems)
+                    print (np.mean(self.basalarea*self.stems))
                     print ('n stems')
-                    print (self.stems)
+                    print (np.mean(self.stems))
                     print ('cut stems')
                     cut_stems = (1.0 - to_ba/(self.basalarea*self.stems)) * self.stems
-                    print (cut_stems)
+                    print (np.mean(cut_stems))
                     print ('remaining stems')
                     remaining_stems = (to_ba/(self.basalarea*self.stems))*self.stems
-                    print (remaining_stems)
+                    print (np.mean(remaining_stems))
                     
                     self.remaining_share = to_ba/(self.allodic[m].allometry_f['bmToBa'](self.biomass)*self.stems)
                     
                     print ('remaining share')
-                    print (self.remaining_share)
+                    print (np.mean(self.remaining_share))
                     agearr = self.agearr
                     ixs = self.ixs
                     
                     print ('nonwoodyl')
-                    print (self.new_lmass[ixs[m]]*cut_stems[ixs[m]])
-                    print (self.allodic[m].allometry_f['bmToFineRoots'](self.biomass[ixs[m]]) * cut_stems[ixs[m]])
+                    print (np.mean(self.new_lmass[ixs[m]]*cut_stems[ixs[m]]))
+                    print (np.mean(self.allodic[m].allometry_f['bmToFineRoots'](self.biomass[ixs[m]]) * cut_stems[ixs[m]]))
                     
                     self.nonwoody_lresid[ixs[m]] =  (self.new_lmass[ixs[m]]\
                         + self.allodic[m].allometry_f['bmToFineRoots'](self.biomass[ixs[m]])) * cut_stems[ixs[m]]
@@ -481,10 +481,10 @@ class Canopylayer():
                     self.k_woody_lresid[ixs[m]] = self.allodic[m].allometry_f['bmToKWoodyLoggingResidues'](self.biomass[ixs[m]]) * cut_stems[ixs[m]]
 
                     print ('nonwoodylogging resids after adding')
-                    print (self.nonwoody_lresid[ixs[m]])
+                    print (np.mean(self.nonwoody_lresid[ixs[m]]))
                     
                     print ('woody logging residues')
-                    print (self.woody_lresid)
+                    print (np.mean(self.woody_lresid))
             
                     self.update(self.biomass)
                     """This update to stand or to main????? """
