@@ -422,6 +422,9 @@ class Canopylayer():
 
     def cutting(self, yr, nut_stat, to_ba = 0.5 ):
         """Unit here /ha"""
+        # OBS! All cutting is taken from uniformly from the canopy layer
+        # You can locate cutting also to subdominant or lower suppressed canopy layer
+        
         if to_ba < 1.0 :
             agearr = self.agearr
             ixs = self.ixs
@@ -451,25 +454,27 @@ class Canopylayer():
                     print ('n stems')
                     print (np.mean(self.stems))
                     print ('cut stems')
-                    cut_stems = (1.0 - to_ba/(self.basalarea*self.stems)) * self.stems
-                    print (np.mean(cut_stems))
-                    print ('remaining stems')
-                    remaining_stems = (to_ba/(self.basalarea*self.stems))*self.stems
+                    cut_stems = (1.0 - to_ba/(self.basalarea*self.stems)) * self.stems          # stems harvested from all dimater classes
+                    print (np.mean(cut_stems))                                 
+                    print ('remaining stems')                                
+                    remaining_stems = (to_ba/(self.basalarea*self.stems))*self.stems            # transferred to stem number
                     print (np.mean(remaining_stems))
                     
-                    self.remaining_share = to_ba/(self.allodic[m].allometry_f['bmToBa'](self.biomass)*self.stems)
+                    print ('Harvested volume ', np.mean(self.volume*cut_stems))
+                    
+                    self.remaining_share = to_ba/(self.allodic[m].allometry_f['bmToBa'](self.biomass)*self.stems)  # shate of stems remaining
                     
                     print ('remaining share')
                     print (np.mean(self.remaining_share))
                     agearr = self.agearr
                     ixs = self.ixs
                     
-                    print ('nonwoodyl')
-                    print (np.mean(self.new_lmass[ixs[m]]*cut_stems[ixs[m]]))
-                    print (np.mean(self.allodic[m].allometry_f['bmToFineRoots'](self.biomass[ixs[m]]) * cut_stems[ixs[m]]))
+                    print ('nonwoody logging residues')
+                    print (np.mean(self.new_lmass[ixs[m]]*cut_stems[ixs[m]]))              #leaf logging residues 
+                    print (np.mean(self.allodic[m].allometry_f['bmToFineRoots'](self.biomass[ixs[m]]) * cut_stems[ixs[m]]))  #fine root logging residues
                     
                     self.nonwoody_lresid[ixs[m]] =  (self.new_lmass[ixs[m]]\
-                        + self.allodic[m].allometry_f['bmToFineRoots'](self.biomass[ixs[m]])) * cut_stems[ixs[m]]
+                        + self.allodic[m].allometry_f['bmToFineRoots'](self.biomass[ixs[m]])) * cut_stems[ixs[m]]             #stemwise fineroot biomass multipled by number of cut stems
                     
                     self.n_nonwoody_lresid[ixs[m]] = (self.N_leaf[ixs[m]] + self.allodic[m].allometry_f['bmToNFineRoots'](self.biomass[ixs[m]])) * cut_stems[ixs[m]]
                     self.p_nonwoody_lresid[ixs[m]] = (self.P_leaf[ixs[m]] + self.allodic[m].allometry_f['bmToPFineRoots'](self.biomass[ixs[m]])) * cut_stems[ixs[m]]

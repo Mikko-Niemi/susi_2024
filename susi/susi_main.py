@@ -253,13 +253,15 @@ class Susi():
                 
                 
                 # --------- Locate cuttings here--------------------
-                print ('calculating year' + str(yr))
+                print ('calculating year ' + str(yr))
                 if yr == spara['cutting_yr']: 
-                      
-                    print ('cutting now' + str(yr) + ' from basal area ' +  str(np.round(np.mean(stand.basalarea), 1)) + ' to ' + str(spara['cutting_to_ba']))
+                    print ('xxxxxxxxxxxx   VOL before cutting xxxxxxxxxxxxxxxx')  
+                    print (str(np.round(np.mean(stand.volume), 1)))
+                    print ('cutting now ' + str(yr) + ' from basal area ' +  str(np.round(np.mean(stand.basalarea), 1)) + ' to ' + str(spara['cutting_to_ba']))
                     
                     stand.dominant.cutting(yr, nut_stat =  stand.nut_stat, to_ba = spara['cutting_to_ba'])            
                     stand.update_lresid()
+                    
                 #      """ ATTN distinct stem mortaility from the logging -> fate of stems different!!!"""            
                 #---------- Organic matter decomposition and nutrient release-----------------
                     
