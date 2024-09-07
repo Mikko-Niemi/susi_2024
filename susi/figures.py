@@ -93,10 +93,10 @@ def hydrology(ff, scen):
     ax = create_profile_line(ax, wt, wtmin, sd, cols, 'WT m', 'annual', fs, facecolor, 'blue', hidex=True, hidey=False)
 
     ax = fig.add_subplot(gs[10:, 4:8])
-    ax = create_profile_line(ax, wtgs, wtmin, sdgs, cols, None, 'annual', fs, facecolor, 'green', hidex=True, hidey=True)
+    ax = create_profile_line(ax, wtgs, wtmin, sdgs, cols, None, 'growing season', fs, facecolor, 'green', hidex=True, hidey=True)
 
     ax = fig.add_subplot(gs[10:, 8:])
-    ax = create_profile_line(ax, wtls, wtmin, sdls, cols, None, 'annual', fs, facecolor, 'orange', hidex=True, hidey=True)
+    ax = create_profile_line(ax, wtls, wtmin, sdls, cols, None, 'late summer', fs, facecolor, 'orange', hidex=True, hidey=True)
 
     #----------Water tables time series
     
@@ -1442,7 +1442,7 @@ def compare_scens(ff):
     wt = np.mean(ncf['strip']['dwtyr_latesummer'][:,:, :], axis = (1,2))   # mean annual wr dim: nscens
     sd = np.std(ncf['strip']['dwtyr_latesummer'][:,:, :], axis = (1,2))     #
     ax = fig.add_subplot(gs[0,1])
-    ax = draw_comparison(ax, ditch_depths, wt, sd, 'water table', 'WT, m', 'Water table', 'blue', facecolor, fs)
+    ax = draw_comparison(ax, ditch_depths, wt, sd, 'water table', 'WT, m', 'late summer water table', 'blue', facecolor, fs)
     
     standco2bal = np.mean(ncf['balance']['C']['stand_c_balance_co2eq'][:, :, :], axis=(1,2))
     standco2balsd = np.std(ncf['balance']['C']['stand_c_balance_co2eq'][:, :, :], axis=(1,2))
