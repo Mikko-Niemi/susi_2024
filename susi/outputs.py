@@ -113,6 +113,24 @@ class Outputs():
         k_non_woody_litter_mort = self.ncf.createVariable('/stand/k_non_woody_litter_mort','f4',('nscens','nyrs', 'ncols',))
         k_non_woody_litter_mort.units = 'K in stand nonwoody litterfall from dead trees in dry biomass [kg/ha/yr] '
         
+        woody_lresid = self.ncf.createVariable('/stand/woody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        woody_lresid.units = 'woody logging residue mass at stand scale [kg/ha]'
+        n_woody_lresid = self.ncf.createVariable('/stand/n_woody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        n_woody_lresid.units = 'N in woody logging residue mass at stand scale [kg/ha]'
+        p_woody_lresid = self.ncf.createVariable('/stand/p_woody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        p_woody_lresid.units = 'P in woody logging residue mass at stand scale [kg/ha]'
+        k_woody_lresid = self.ncf.createVariable('/stand/k_woody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        k_woody_lresid.units = 'K in woody logging residue mass at stand scale [kg/ha]'
+        
+        nonwoody_lresid = self.ncf.createVariable('/stand/nonwoody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        nonwoody_lresid.units = 'nonwoody logging residue mass at stand scale [kg/ha]'
+        n_nonwoody_lresid = self.ncf.createVariable('/stand/n_nonwoody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        n_nonwoody_lresid.units = 'N in nonwoody logging residue mass at stand scale [kg/ha]'
+        p_nonwoody_lresid = self.ncf.createVariable('/stand/p_nonwoody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        p_nonwoody_lresid.units = 'P in nonwoody logging residue mass at stand scale [kg/ha]'
+        k_nonwoody_lresid = self.ncf.createVariable('/stand/k_nonwoody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        k_nonwoody_lresid.units = 'K in nonwoody logging residue mass at stand scale [kg/ha]'
+
         
         pulpvolume =  self.ncf.createVariable('/stand/pulpvolume','f4',('nscens','nyrs', 'ncols',))                         # pulpwood volume m3/ha
         pulpvolume.units = 'stand pulpwood volume [m3/ha]'
@@ -165,6 +183,7 @@ class Outputs():
         p_finerootlitter.units = 'P in canopy layer fine root litterfall [kg/tree/yr] '
         k_finerootlitter =  self.ncf.createVariable('/stand/' + name +'/k_finerootlitter','f4',('nscens','nyrs', 'ncols',))                   # K in fine root litter kg/ha/yr
         k_finerootlitter.units = 'K in canopy layer fine root litterfall [kg/tree/yr] '
+        
         nonwoodylitter =   self.ncf.createVariable('/stand/' + name +'/nonwoodylitter','f4',('nscens','nyrs', 'ncols',))                       # woody litter kg/ha/yr
         nonwoodylitter.units = 'canopy layer non-woody litterfall: leaves + fineroots [kg/tree/yr]'
         n_nonwoodylitter =  self.ncf.createVariable('/stand/' + name +'/n_nonwoodylitter','f4',('nscens','nyrs', 'ncols',))                      # N in woody litter kg/ha/yr
@@ -173,6 +192,7 @@ class Outputs():
         p_nonwoodylitter.units = 'P in canopy layer non-woody litterfall: leaves + fineroots [kg/tree/yr]'
         k_nonwoodylitter =  self.ncf.createVariable('/stand/' + name +'/k_nonwoodylitter','f4',('nscens','nyrs', 'ncols',))                      # K in woody litter kg/ha/yr   
         k_nonwoodylitter.units = 'K in canopy layer non-woody litterfall: leaves + fineroots [kg/tree/yr]'    
+        
         pulpvolume =  self.ncf.createVariable('/stand/' + name +'/pulpvolume','f4',('nscens','nyrs', 'ncols',))                         # pulpwood volume m3/ha
         pulpvolume.units = 'canopy layer pulpwood volume [m3/tree]'
         stems =  self.ncf.createVariable('/stand/' + name +'/stems','f4',('nscens','nyrs', 'ncols',))                              # stocking, number of stems pcs/ha
@@ -191,6 +211,45 @@ class Outputs():
         p_woodylitter.units = 'P in canopy layer woody litterfall [kg/tree/yr]'
         k_woodylitter = self.ncf.createVariable('/stand/' + name +'/k_woodylitter','f4',('nscens','nyrs', 'ncols',))                       # K in woody litter kg/ha/yr   
         k_woodylitter.units = 'K canopy layer woody litterfall [kg/tree/yr]'
+        
+        nonwoody_lresid = self.ncf.createVariable('/stand/' + name +'/nonwoody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        nonwoody_lresid.units = 'canopy layer nonwoody logging residues [kg/tree/yr]'
+        n_nonwoody_lresid = self.ncf.createVariable('/stand/' + name +'/n_nonwoody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        n_nonwoody_lresid.units = 'N in canopy layer nonwoody logging residues [kg/tree/yr]'
+        p_nonwoody_lresid = self.ncf.createVariable('/stand/' + name +'/p_nonwoody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        p_nonwoody_lresid.units = 'P in canopy layer nonwoody logging residues [kg/tree/yr]'
+        k_nonwoody_lresid = self.ncf.createVariable('/stand/' + name +'/k_nonwoody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        k_nonwoody_lresid.units = 'K in canopy layer nonwoody logging residues [kg/tree/yr]'
+        
+        woody_lresid = self.ncf.createVariable('/stand/' + name +'/woody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        woody_lresid.units = 'canopy layer woody logging residues [kg/tree/yr]'
+        n_woody_lresid = self.ncf.createVariable('/stand/' + name +'/n_woody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        n_woody_lresid.units = 'N in canopy layer woody logging residues [kg/tree/yr]'
+        p_woody_lresid = self.ncf.createVariable('/stand/' + name +'/p_woody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        p_woody_lresid.units = 'P in canopy layer woody logging residues [kg/tree/yr]'
+        k_woody_lresid = self.ncf.createVariable('/stand/' + name +'/k_woody_lresid','f4',('nscens','nyrs', 'ncols',)) 
+        k_woody_lresid.units = 'K in canopy layer woody logging residues [kg/tree/yr]'
+
+        non_woody_litter_mort =   self.ncf.createVariable('/stand/' + name +'/non_woody_litter_mort','f4',('nscens','nyrs', 'ncols',))                       # woody litter kg/ha/yr
+        non_woody_litter_mort.units = 'canopy layer non-woody litterfall- in mortality: leaves + fineroots [kg/tree/yr]'
+        n_non_woody_litter_mort =  self.ncf.createVariable('/stand/' + name +'/n_non_woody_litter_mort','f4',('nscens','nyrs', 'ncols',))                      # N in woody litter kg/ha/yr
+        n_non_woody_litter_mort.units = 'N in canopy layer non-woody litterfall in mortality: leaves + fineroots [kg/tree/yr]'
+        p_non_woody_litter_mort =  self.ncf.createVariable('/stand/' + name +'/p_non_woody_litter_mort','f4',('nscens','nyrs', 'ncols',))                      # P in woody litter kg/ha/yr
+        p_non_woody_litter_mort.units = 'P in canopy layer non-woody litterfall in mortality: leaves + fineroots [kg/tree/yr]'
+        k_non_woody_litter_mort =  self.ncf.createVariable('/stand/' + name +'/k_non_woody_litter_mort','f4',('nscens','nyrs', 'ncols',))                      # K in woody litter kg/ha/yr   
+        k_non_woody_litter_mort.units = 'K in canopy layer non-woody litterfall in mortality: leaves + fineroots [kg/tree/yr]'    
+        
+        woody_litter_mort =   self.ncf.createVariable('/stand/' + name +'/woody_litter_mort','f4',('nscens','nyrs', 'ncols',))                       # woody litter kg/ha/yr
+        woody_litter_mort.units = 'canopy layer woody litterfall- in mortality: leaves + fineroots [kg/tree/yr]'
+        n_woody_litter_mort =  self.ncf.createVariable('/stand/' + name +'/n_woody_litter_mort','f4',('nscens','nyrs', 'ncols',))                      # N in woody litter kg/ha/yr
+        n_woody_litter_mort.units = 'N in canopy layer woody litterfall in mortality: leaves + fineroots [kg/tree/yr]'
+        p_woody_litter_mort =  self.ncf.createVariable('/stand/' + name +'/p_woody_litter_mort','f4',('nscens','nyrs', 'ncols',))                      # P in woody litter kg/ha/yr
+        p_woody_litter_mort.units = 'P in canopy layer woody litterfall in mortality: leaves + fineroots [kg/tree/yr]'
+        k_woody_litter_mort =  self.ncf.createVariable('/stand/' + name +'/k_woody_litter_mort','f4',('nscens','nyrs', 'ncols',))                      # K in woody litter kg/ha/yr   
+        k_woody_litter_mort.units = 'K in canopy layer woody litterfall in mortality: leaves + fineroots [kg/tree/yr]'    
+
+   
+        
         yi =  self.ncf.createVariable('/stand/' + name +'/yi','f4',('nscens','nyrs', 'ncols',))                            # yield. here same as volume
         yi.units = 'canopy layer cumulative volume of growing stock, here same as volume [m3/tree] '       
         
@@ -520,7 +579,6 @@ class Outputs():
         self.ncf['stand']['nut_stat'][scen, year, :] = stand.nut_stat
         
         self.ncf['stand']['woody_litter_mort'][scen, year, :] = stand.woody_litter_mort
-        
         self.ncf['stand']['n_woody_litter_mort'][scen, year, :] = stand.n_woody_litter_mort
         self.ncf['stand']['p_woody_litter_mort'][scen, year, :] = stand.p_woody_litter_mort
         self.ncf['stand']['k_woody_litter_mort'][scen, year, :] = stand.k_woody_litter_mort
@@ -530,7 +588,15 @@ class Outputs():
         self.ncf['stand']['p_non_woody_litter_mort'][scen, year, :] = stand.p_non_woody_litter_mort
         self.ncf['stand']['k_non_woody_litter_mort'][scen, year, :] = stand.k_non_woody_litter_mort
         
+        self.ncf['stand']['woody_lresid'][scen, year, :] = stand.woody_lresid
+        self.ncf['stand']['n_woody_lresid'][scen, year, :] = stand.n_woody_lresid
+        self.ncf['stand']['p_woody_lresid'][scen, year, :] = stand.p_woody_lresid
+        self.ncf['stand']['k_woody_lresid'][scen, year, :] = stand.k_woody_lresid
 
+        self.ncf['stand']['nonwoody_lresid'][scen, year, :] = stand.woody_lresid
+        self.ncf['stand']['n_nonwoody_lresid'][scen, year, :] = stand.n_nonwoody_lresid
+        self.ncf['stand']['p_nonwoody_lresid'][scen, year, :] = stand.p_nonwoody_lresid
+        self.ncf['stand']['k_nonwoody_lresid'][scen, year, :] = stand.k_nonwoody_lresid
 
     def write_canopy_layer(self, scen, year, name, layer):
         self.ncf['stand'][name]['basalarea'][scen, year, :] = layer.basalarea
@@ -551,6 +617,7 @@ class Outputs():
         self.ncf['stand'][name]['stems'][scen, year, :] = layer.stems
         self.ncf['stand'][name]['volume'][scen, year, :] = layer.volume
         self.ncf['stand'][name]['volumegrowth'][scen, year, :] = layer.volumegrowth      
+        
         self.ncf['stand'][name]['woodylitter'][scen, year, :] = layer.woodylitter
         self.ncf['stand'][name]['n_woodylitter'][scen, year, :] = layer.n_woodylitter
         self.ncf['stand'][name]['p_woodylitter'][scen, year, :] = layer.p_woodylitter
