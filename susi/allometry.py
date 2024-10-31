@@ -81,7 +81,10 @@ class Allometry():
         sp = sp if sp < 4 else 3
         spe = species_codes[sp]
         #leaf_scale ={1: 1.1, 2: 1.2, 3: 1.355, 4:1.4, 5: 1.5, 6: 1.6 }    # scales the leaf mass down from mineral soil, key is the site fertility class
-        leaf_scale ={1: 1.0, 2: 1.0, 3: 1.355, 4:1.4, 5: 1.45, 6: 1.5 }    # scales the leaf mass down from mineral soil, key is the site fertility class
+        if sp == 2:
+            leaf_scale ={1: 1.5, 2: 1.5, 3: 1.5, 4:1.5, 5: 1.5, 6: 1.5 }    # scales the leaf mass down from mineral soil, key is the site fertility class        
+        else:
+            leaf_scale ={1: 1.0, 2: 1.0, 3: 1.355, 4:1.4, 5: 1.45, 6: 1.5 }    # scales the leaf mass down from mineral soil, key is the site fertility class
 
     #----modify the data frame, include age = 0-------------------------
         row = np.zeros((np.shape(df)[1]), dtype=float)

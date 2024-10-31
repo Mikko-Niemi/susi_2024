@@ -860,7 +860,7 @@ def mass(ff, scen):
     ax.plot(np.diff(peat), color='brown', label = 'peat')
     ax.plot(np.diff(mor), color='orange', label= 'mor')
     ax.legend()
-    ax.set_title('Organic soil mass chagne, kg $m^{-2} yr^{-1}$')
+    ax.set_title('Organic soil mass change, kg $m^{-2} yr^{-1}$')
     ax.get_xaxis().set_visible(False)
     ax.tick_params(axis='y', labelsize=fs)
     ax.set_facecolor(facecolor)

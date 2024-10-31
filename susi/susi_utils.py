@@ -945,6 +945,7 @@ def rew(dwt):
     wt=np.array([-150.0, -1.0, -0.5, -0.3, -0.1, 0.0])   #water table in m
     #re=np.array([0.0, 0.2, 0.4 ,1.0, 1.0, 0.7])    #relative water uptake
     re=np.array([0.0, 0.1, 0.4 ,1.0, 1.0, 0.7])    #aml relative water uptake
+    #re=np.array([0.0, 0.05, 0.4 ,1.0, 1.0, 0.7])    #aml relative water uptake
 
     frew=interp1d(wt,re,fill_value='extrapolate')    
     return frew(dwt)
@@ -958,6 +959,7 @@ def rewFloor(dwt,LAI):          # Leenan testi
     fLAI = interp1d(LAIarray,rajKerroin,fill_value='extrapolate')  
     
     wt=np.array([-150.0, -1.0, -0.5, -0.3, -0.1, 0.0])   #water table in m
+    
     re=fLAI(LAI) * np.array([1, 1, 1, 1, 1, 1])
     
     frew=interp1d(wt,re,fill_value='extrapolate')   
@@ -966,8 +968,10 @@ def rewFloor(dwt,LAI):          # Leenan testi
 
 def rew_drylimit(dwt):
     # Koivusalo et al. 2008 HESS without wet side limit
-    wt=np.array([-150.0, -1.2, -0.7, -0.15, 0.0])   #water table in m
-    re=np.array([0.0, 0.5, 1.0, 1.0, 1.0])    #relative water uptake
+    #wt=np.array([-150.0, -1.2, -0.7, -0.15, 0.0])   #water table in m
+    #re=np.array([0.0, 0.5, 1.0, 1.0, 1.0])    #relative water uptake
+    wt=np.array([-150.0, -1.0, -0.5, -0.3, -0.1, 0.0])   #aml water table in m
+    re=np.array([0.0, 0.1, 0.4 ,1.0, 1.0, 0.7])    #aml relative water uptake
     
 
     frew=interp1d(wt,re,fill_value='extrapolate')
