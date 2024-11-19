@@ -136,13 +136,16 @@ class Allometry():
         rho = {'Pine': 400., 'Spruce': 380., 'Birch':480.}                          # wood density kg/m3
         sla= {'Pine': 6.8, 'Spruce': 7.25, 'Birch':14.0}                            # one-sided specific leaf area Härkönen et al. 2015 BER 20, 181-195      
     
-        longevityLeaves = {'Pine':2.0, 'Spruce':4., 'Birch':1.}                     # yrs, life span of leaves and fine roots    
+        #longevityLeaves = {'Pine':2.0, 'Spruce':4., 'Birch':1.}                     # yrs, life span of leaves and fine roots    
+        longevityLeaves = {'Pine':3.0, 'Spruce':5., 'Birch':1.}                     # yrs, life span of leaves and fine roots    
         longevityFineRoots ={'Pine':0.7, 'Spruce':1., 'Birch':1.}                    # Yuan & Chen 2010, turnover 1.07 times per year    
         # longevityBranch ={'Pine':22., 'Spruce':22., 'Birch':22.}                    # Pine Mäkinen 1999
         # longevityCoarseRoots ={'Pine':22., 'Spruce':22., 'Birch':22.}               # assumption as branches
-        longevityBranch ={'Pine':15., 'Spruce':20., 'Birch':20.}                    # Pine Mäkinen 1999
-        longevityCoarseRoots ={'Pine':15., 'Spruce':20., 'Birch':20}               # assumption as branches
-    
+        #longevityBranch ={'Pine':15., 'Spruce':20., 'Birch':20.}                    # Pine Mäkinen 1999
+        #longevityCoarseRoots ={'Pine':15., 'Spruce':20., 'Birch':20}               # assumption as branches
+        longevityBranch ={'Pine':20., 'Spruce':20., 'Birch':20.}                    # Pine Mäkinen 1999
+        longevityCoarseRoots ={'Pine':20., 'Spruce':20., 'Birch':20}               # assumption as branches
+
         #********** Interpolation data ****************************************
         df['leaves'] = df['leaves'] / leaf_scale[sfc]                               # adjusting to peatland sites (Data: Hannu Hökkä 2022)
         df['leafarea'] = df['leaves'].values /10000. * sla[spe]         #ATTN This is now leves / tree -> requires *N/1000            # leaf area index m2 m-2

@@ -17,11 +17,12 @@ import susi.susi_io
 
 
 #***************** local call for SUSI*****************************************************
-folderName=r'C:/Users/alauren/OneDrive - University of Eastern Finland/Susi/susi_22_out/'
+folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/vesitase/vesitase_out/'
 
+#r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/vesitase/vesitase_out/'
 
-wpath = r'C:/Users/alauren/Documents/WinPython-64bit-2.7.10.3/susi_experim/weather/'
-mottipath =  r'C:/Users/alauren/OneDrive - University of Eastern Finland/Henkilöt/Stenberg/motti_Arille/'
+wpath = r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/vesitase/vesitase_wfiles/'
+mottipath =  r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/vesitase/motti_files/'
 
 sites =['ansa21', 'ansa26', 'jaakkoin61', 'jaakkoin62', 'koira11', 'koira12',
     'neva11', 'neva14', 'neva31', 'neva34','parkano11']

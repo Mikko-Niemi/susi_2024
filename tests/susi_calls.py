@@ -12,20 +12,15 @@ from susi.susi_main import Susi
 
 
 #***************** local call for SUSI*****************************************************
-folderName=r'C:/Users/alauren/Documents/WinPython-64bit-2.7.10.3/Susi_8_3_py37/outputs/' #'sensitivity/'
-wpath = r'C:/Users/alauren/OneDrive - University of Eastern Finland/codes/susi_11/inputs/'
+folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/codes/susi_11/outputs/' #'sensitivity/'
+wpath = r'C:/Users/laurenan/OneDrive - University of Helsinki/codes/susi_11/inputs/'
 
 
-mottifile = {'path':r'C:/Users/alauren/OneDrive - University of Eastern Finland/codes/susi_11/inputs/',
+mottifile = {'path':r'C:/Users/laurenan/OneDrive - University of Helsinki/codes/susi_11/inputs/',
               'dominant':{1: 'motti viitasaari_mtkg.xls'},
               'subdominant':{0:'susi_motti_input_lyr_1.xlsx'},
               'under':{0:'susi_motti_input_lyr_2.xlsx'}} 
-"""
-mottifile = {'path':r'C:/Users/alauren/OneDrive - University of Eastern Finland/Susi/krycklan/',
-              'dominant':{1: 'susi_krycklan_input_lyr_0.xlsx'},
-              'subdominant':{0:'susi_motti_input_lyr_1.xlsx'},
-              'under':{0:'susi_motti_input_lyr_2.xlsx'}} 
-"""
+
 wdata='parkano_weather.csv'
 
 start_date = datetime.datetime(2000,1,1)
@@ -93,7 +88,7 @@ susi.run_susi(forc, wpara, cpara, org_para, spara, outpara, photopara, start_yr,
              
 from netCDF4 import Dataset 
 import numpy as np
-ff = r'C:/Users/alauren/Documents/WinPython-64bit-2.7.10.3/Susi_8_3_py37/outputs/susi.nc'
+ff = folderName + 'susi.nc'
 scen = 0
 ncf=Dataset(ff, mode='r')                                        # water netCDF, open in reading mode
 

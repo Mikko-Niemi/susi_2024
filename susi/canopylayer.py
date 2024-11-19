@@ -329,7 +329,8 @@ class Canopylayer():
         sla= {'Pine': 6.8, 'Spruce': 7.25, 'Birch':14.0}                       # specific leaf area Härkönen et al. 2015 BER 20, 181-195      
         species_codes = {1:'Pine', 2: 'Spruce', 3: 'Birch'}
         spe = species_codes[species[0]]                                        # Take the first item, all are same here
-        longevityLeaves = {'Pine':[3.5, 2.5], 'Spruce':[6.0, 4.0], 'Birch':[1.0, 1.0]}                     # yrs, life span of leaves and fine roots    
+        #longevityLeaves = {'Pine':[3.5, 2.5], 'Spruce':[6.0, 4.0], 'Birch':[1.0, 1.0]}                     # yrs, life span of leaves and fine roots    
+        longevityLeaves = {'Pine':[5.0, 3.5], 'Spruce':[8.0, 5.0], 'Birch':[1.0, 1.0]}                     # yrs, life span of leaves and fine roots    
     
         N_con = interp1d(np.array([0.66,1.5]), np.array(nuts[spe]['Foliage']['N']), fill_value=tuple(nuts[spe]['Foliage']['N']), bounds_error=False)
         P_con = interp1d(np.array([0.66,1.5]), np.array(nuts[spe]['Foliage']['P']), fill_value=tuple(nuts[spe]['Foliage']['P']), bounds_error=False)

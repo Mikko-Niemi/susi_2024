@@ -20,7 +20,7 @@ from matplotlib.gridspec import GridSpec
 sns.set()
 
 
-folder_meas = r'C:/Users/alauren/OneDrive - University of Eastern Finland/Stenberg/puusto_ym_data_Arille/Pohjavesiaineistot/'
+folder_meas = r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/vesitase/Pohjavesiaineistot/'
 
 params = para(period='start-end')
 print (params.keys())
@@ -119,7 +119,7 @@ txt=['a', 'b', 'c', 'd', 'e', 'f',
     'g', 'h', 'i', 'j', 'k']
 
 #sites =['neva11']
-folder_meas = r'C:/Users/alauren/OneDrive - University of Eastern Finland/Henkilöt/Stenberg/puusto_ym_data_Arille/Pohjavesiaineistot/'
+folder_meas = r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/vesitase/Pohjavesiaineistot/'
 i=0
 for crd, k, tx, n in zip(coordinates, sites, txt, names):
     print (crd, k) 
@@ -133,7 +133,7 @@ for crd, k, tx, n in zip(coordinates, sites, txt, names):
     dfmeas = dfmeas.drop(columns=[col for col in dfmeas if col not in tubes])
     dfmeas = dfmeas/100.*-1
     
-    ff = r'C:/Users/alauren/OneDrive - University of Eastern Finland/Susi/susi_22_out/' + k + '.nc'
+    ff = r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/vesitase/vesitase_out/' + k + '.nc'
     params = para(period='start-end')
     sday = params[k]['start_date']
     end_date =params[k]['end_date']
@@ -195,7 +195,7 @@ for k in sites:
     dfmeas = dfmeas.drop(columns=[col for col in dfmeas if col not in tubes])
     dfmeas = dfmeas/100.*-1
 
-    ff = r'C:/Users/alauren/OneDrive - University of Eastern Finland/Susi/susi_22_out/' + k + '.nc'
+    ff = r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/vesitase/vesitase_out/' + k + '.nc'
     params = para(period='start-end')
     start_date = params[k]['start_date']
     end_date =params[k]['end_date']
@@ -238,7 +238,7 @@ bm_gr = np.zeros(len(sites))
 bm_gr_sd = np.zeros(len(sites))
 
 for n, k in enumerate(sites):
-    ff = r'C:/Users/alauren/OneDrive - University of Eastern Finland/Susi/susi_22_out/' + k + '.nc'
+    ff = r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/vesitase/vesitase_out/' + k + '.nc'
     params = para(period='start-end')
     sday = params[k]['start_date']
     end_date =params[k]['end_date']
@@ -302,7 +302,7 @@ names = ['Koirasuo11','Koirasuo12',
 
 
 
-fbio = r'C:/Users/alauren/OneDrive - University of Eastern Finland/Susi/Susi combined/gr_bio.xlsx'
+fbio =r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/vesitase/gr_bio.xlsx'
 dfbio = pd.read_excel(fbio, index_col='site')
 
 obs=[]
@@ -369,7 +369,7 @@ fs = 16
 
 obs_wt = dfdata['meas'].values[:,np.newaxis]
 sim_wt =  dfdata['sim'].values
-a, _, _, _ = np.linalg.lstsq(obs_wt,sim_wt)
+a, _, _, _ = np.linalg.lstsq(obs_wt,sim_wt, rcond=None)
 eq = 'y = ' +  str(np.round(a[0],3)) + 'x'
 x =np.arange(-0.9 , -0.03, 0.05)
 plt.plot(x, a*x, 'k--', linewidth=2)
@@ -382,10 +382,10 @@ plt.text(-0.9, -0.15, 'RMSE ' + str(rmse), fontsize=fs-1)
 plt.xlabel('Observed $\it{WT}$, m', fontsize =fs )
 plt.ylabel('Predicted $\it{WT}$, m', fontsize =fs)
 
-for tick in ax0.xaxis.get_major_ticks():
-    tick.label.set_fontsize(14) 
-for tick in ax0.yaxis.get_major_ticks():
-    tick.label.set_fontsize(14) 
+#for tick in ax0.xaxis.get_major_ticks():
+#    tick.label.set_fontsize(14) 
+#for tick in ax0.yaxis.get_major_ticks():
+#    tick.label.set_fontsize(14) 
 
 ax0.text(0.04, 0.95, 'a', horizontalalignment='left',
                verticalalignment='top', fontsize=18, transform = ax0.transAxes,  fontweight='bold')
@@ -416,7 +416,7 @@ obs_growths = dfvols['bioobs'].values[:,np.newaxis]
 sim_growths = dfvols['bmgr'].values
 
 rmse = np.round(np.sqrt(np.square(obs_growths-sim_growths).mean()),0)
-a, _, _, _ = np.linalg.lstsq(obs_growths, sim_growths)
+a, _, _, _ = np.linalg.lstsq(obs_growths, sim_growths, rcond=None)
 eq = 'y = ' +  str(np.round(a[0],3)) + 'x'
 x =np.arange(1000.0 , 9000.0, 100)
 plt.plot(x, a*x, 'k--', linewidth=2)
@@ -429,10 +429,10 @@ plt.text(5000, 8900, eq , fontsize=fs-1)
 ax1.text(0.04, 0.95, 'b', horizontalalignment='left',
                verticalalignment='top', fontsize=18, transform = ax1.transAxes, fontweight='bold')
 
-for tick in ax1.xaxis.get_major_ticks():
-    tick.label.set_fontsize(14) 
-for tick in ax1.yaxis.get_major_ticks():
-    tick.label.set_fontsize(14) 
+#for tick in ax1.xaxis.get_major_ticks():
+#    tick.label.set_fontsize(14) 
+#for tick in ax1.yaxis.get_major_ticks():
+#    tick.label.set_fontsize(14) 
 
 #-------------------Vol figure ------------------
 ax2 = fig.add_subplot(gs[1,0])
@@ -472,7 +472,7 @@ slope, intercept, r_value, p_value, std_err = stats.linregress(obs_growths,
 diffv = dfvols['grobs'].values/dfvols['yrs'].values - dfvols['grsim'].values
 rmse = np.round(np.sqrt(np.square(diffv).mean()),3)
 obs_growths = obs_growths[:,np.newaxis]
-a, _, _, _ = np.linalg.lstsq(obs_growths, sim_growths)
+a, _, _, _ = np.linalg.lstsq(obs_growths, sim_growths, rcond=None)
 
 
 eq = 'y = ' +  str(np.round(a[0],3)) + 'x'
@@ -487,10 +487,10 @@ plt.text(6, 9, eq , fontsize=fs-1)
 ax2.text(0.04, 0.95, 'c', horizontalalignment='left',
                verticalalignment='top', fontsize=18, transform = ax2.transAxes,  fontweight='bold')
 
-for tick in ax2.xaxis.get_major_ticks():
-    tick.label.set_fontsize(14) 
-for tick in ax2.yaxis.get_major_ticks():
-    tick.label.set_fontsize(14) 
+#for tick in ax2.xaxis.get_major_ticks():
+#    tick.label.set_fontsize(14) 
+#for tick in ax2.yaxis.get_major_ticks():
+#    tick.label.set_fontsize(14) 
 
 #-------------------CO2 figure ------------------
 ax3 = fig.add_subplot(gs[1,1])
@@ -502,7 +502,7 @@ esarr = np.empty(0)
 emps = np.empty(0)
 c=0
 for k in (sites):
-    ff = r'C:/Users/alauren/OneDrive - University of Eastern Finland/Susi/susi_22_out/' + k + '.nc'
+    ff = r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/vesitase/vesitase_out/' + k + '.nc'
     params = para(period='start-end')
     sday = params[k]['start_date']
     end_date =params[k]['end_date']
@@ -557,7 +557,7 @@ slope, intercept, r_value, p_value, std_err = stats.linregress(obs_growths,
 #diffv = dfvols['grobs'].values/dfvols['yrs'].values - dfvols['grsim'].values
 #rmse = np.round(np.sqrt(np.square(diffv).mean()),3)
 obs_growths = obs_growths[:,np.newaxis]
-a, _, _, _ = np.linalg.lstsq(obs_growths, sim_growths)
+a, _, _, _ = np.linalg.lstsq(obs_growths, sim_growths, rcond=None)
 
 
 eq = 'y = ' +  str(np.round(a[0],3)) + 'x'
@@ -572,17 +572,17 @@ plt.text(2000, 2000, eq , fontsize=fs-1)
 ax3.text(1.3, 0.95, 'd', horizontalalignment='left',
                verticalalignment='top', fontsize=18, transform = ax2.transAxes,  fontweight='bold')
 
-for tick in ax3.xaxis.get_major_ticks():
-    tick.label.set_fontsize(14) 
-for tick in ax3.yaxis.get_major_ticks():
-    tick.label.set_fontsize(14) 
+#for tick in ax3.xaxis.get_major_ticks():
+#   tick.label.set_fontsize(14) 
+#for tick in ax3.yaxis.get_major_ticks():
+#    tick.label.set_fontsize(14) 
 
 
 #%%
 
 
 for n, k in enumerate(sites[:1]):
-    ff = r'C:/Users/alauren/OneDrive - University of Eastern Finland/Susi/susi_22_out/' + k + '.nc'
+    ff = r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/vesitase/vesitase_out/'+ k + '.nc'
     params = para(period='start-end')
     sday = params[k]['start_date']
     end_date =params[k]['end_date']
