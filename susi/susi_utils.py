@@ -303,8 +303,8 @@ def read_FMI_weather(ID, start_date,end_date, sourcefile=None):
     fmi['esa']=esa;
     fmi['vpd']=vpd
     fmi['doy']=fmi.index.dayofyear
-    fmi=fmi.drop(['aika'],axis = 1)
-
+    #fmi=fmi.drop(['aika'],axis = 1)
+    fmi=fmi.drop(columns = ['aika'])
 
 
     #replace nan's in prec with 0.0

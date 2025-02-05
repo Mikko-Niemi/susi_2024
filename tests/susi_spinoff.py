@@ -98,7 +98,7 @@ for stand, weather_input,outname,sitetype in zip(stands, weather_inputs,outnames
                                     mottifile=mottifile, peat= 'other', photosite='All data', 
                                     folderName=folderName,ageSim=ageSim, sarkaSim=sarkaSim, sfc=sfc)
     
-        
+    break    
 #%%          
              
 from netCDF4 import Dataset 
@@ -108,7 +108,7 @@ import matplotlib.pylab as plt
 
 # @title Valitse muuttuja { run: "auto" }
 muuttuja = 'kangashumus' #@param ['kangashumus', 'turve']
-aine = 'Mass' #@param ['Mass', 'N', 'P', 'K']
+aine = 'K' #@param ['Mass', 'N', 'P', 'K']
 scen = 0
 outnames = ['H22.nc', 'H32.nc', 'H42.nc',
             'J22.nc','J32.nc','J42.nc', 
@@ -127,15 +127,58 @@ for outn in outnames:
     
     litterin = ncf['esom'][aine]['L0L'][scen, :, :] + ncf['esom'][aine]['L0W'][scen, :, :] 
     
-    #vars = {'kangashumus': dfmor, 'turve': dfpeat}
+    #release = ncf['balance'][aine]['decomposition_tot'][scen, :, :]    
+    vars = {'kangashumus': dfmor, 'turve': dfpeat}
     
     #data_table.DataTable(vars[muuttuja], include_index=False, num_rows_per_page=25, max_columns = 50)
     ncf.close()
     print (np.mean(litterin, axis=1))
     print (np.mean(dfmor, axis=1))
-    #print (np.std(dfmor, axis = 1))
+    print (np.std(dfmor, axis = 1))
     plt.figure(outn)
     plt.plot(np.mean(dfmor, axis=1))
     plt.plot(np.cumsum(np.mean(litterin, axis=1)))
     plt.title(outn)
-    plt.ylim([0, 300000])
+    #plt.ylim([0, 300000])
+
+#%%          
+             
+from netCDF4 import Dataset 
+import numpy as np
+import pandas as pd
+import matplotlib.pylab as plt
+
+# @title Valitse muuttuja { run: "auto" }
+muuttuja = 'kangashumus' #@param ['kangashumus', 'turve']
+aine = 'K' #@param ['Mass', 'N', 'P', 'K']
+scen = 0
+outnames = ['H22.nc', 'H32.nc', 'H42.nc',
+            'J22.nc','J32.nc','J42.nc', 
+            'K22.nc','K32.nc','K42.nc']
+folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/codes/susi_11/outputs/' #'sensitivity/'
+
+for outn in outnames:
+    ff = folderName + outn
+    
+    ncf=Dataset(ff, mode='r')
+    peat = ncf['esom'][aine]['P1'][scen,:, :]/10000. + ncf['esom'][aine]['P2'][scen,:, :]/10000. + ncf['esom'][aine]['P3'][scen,:, :]/10000.
+    dfpeat = pd.DataFrame(peat*10000)
+    mor = ncf['esom'][aine]['LL'][scen,:, :]/10000. + ncf['esom'][aine]['LW'][scen,:, :]/10000. + ncf['esom'][aine]['FL'][scen,:, :]/10000.\
+     + ncf['esom'][aine]['FW'][scen,:, :]/10000. + ncf['esom'][aine]['H'][scen,:, :]/10000.
+    dfmor = pd.DataFrame(mor*10000)
+    
+    litterin = ncf['esom'][aine]['L0L'][scen, :, :] + ncf['esom'][aine]['L0W'][scen, :, :] 
+    
+    release = ncf['balance'][aine]['decomposition_tot'][scen, 1:, :]    
+    dfrelease = np.mean(pd.DataFrame(release), axis=1) 
+    morrelease = (dfrelease + np.diff(np.mean(dfpeat, axis = 1)))
+    morfraction = (morrelease / dfrelease)
+    #data_table.DataTable(vars[muuttuja], include_index=False, num_rows_per_page=25, max_columns = 50)
+    ncf.close()
+    #print (dfrelease)
+    
+    plt.figure(outn)
+    plt.plot(morfraction)
+    #plt.plot(np.cumsum(np.mean(litterin, axis=1)))
+    plt.title(outn)
+    #plt.ylim([0, 300000])

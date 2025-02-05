@@ -803,7 +803,7 @@ class Outputs():
 
         soilbal = (stand.nonwoodylitter+ stand.nonwoody_lresid  + stand.non_woody_litter_mort
                     + stand.woodylitter + stand.woody_lresid + stand.woody_litter_mort\
-                    + groundvegetation.nonwoodylitter +  + groundvegetation.woodylitter) * bm_to_c \
+                    + groundvegetation.nonwoodylitter  + groundvegetation.woodylitter) * bm_to_c \
                     - esmass.out * bm_to_c - esmass.lmw - esmass.hmw
                     
         self.ncf['balance']['C']['stand_c_balance_c'][scen, year, :] = standbal - ch4*(12/16.0)
