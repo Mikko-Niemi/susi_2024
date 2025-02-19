@@ -40,7 +40,7 @@ humus =[6.9, 5.8, 7.0, 5.5, 5.2,                 #20yrs spinoff
         ]
 for stand, weather_input,outname,sitetype,hum in zip(stands, weather_inputs,outnames, sfcs, humus):
     #***************** local call for SUSI*****************************************************
-    folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/mikko_niemi//outputs_shallow/' #'sensitivity/'
+    folderName=r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/mikko_niemi//outputs/' #_shallow/' 
     wpath = r'C:/Users/laurenan/OneDrive - University of Helsinki/SUSI/mikko_niemi/weather_data/'
     
     
@@ -100,9 +100,13 @@ for stand, weather_input,outname,sitetype,hum in zip(stands, weather_inputs,outn
     
     spara['ditch depth west'] = [-0.3, -0.6, -0.9]   #nLyrs kerrosten lkm, dzLyr kerroksen paksuus m, saran levys m, n laskentasolmulen lukumäärä, ditch depth pjan syvyys simuloinnin alussa m  
     spara['ditch depth east'] = [-0.3, -0.6, -0.9]
-    spara['ditch depth 20y west'] = [-0.2, -0.4, -0.6]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
-    spara['ditch depth 20y east'] = [-0.2, -0.4, -0.6]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
+    #spara['ditch depth 20y west'] = [-0.2, -0.4, -0.6]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
+    #para['ditch depth 20y east'] = [-0.2, -0.4, -0.6]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
+    spara['ditch depth 20y west'] = [-0.3, -0.6, -0.9]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
+    spara['ditch depth 20y east'] = [-0.3, -0.6, -0.9]                                            #ojan syvyys 20 vuotta simuloinnin aloituksesta
+    
     spara['scenario name'] =  ['D30', 'D60','D90']                                #kasvunlisaykset
+    
     #spara['enable_peatmiddle'] = False,
     #spara['enable_peatbottom'] = False
     #print (spara)
@@ -112,7 +116,7 @@ for stand, weather_input,outname,sitetype,hum in zip(stands, weather_inputs,outn
     susi.run_susi(forc, wpara, cpara, org_para, spara, outpara, photopara, start_yr, end_yr, wlocation = 'undefined', 
                                     mottifile=mottifile, peat= 'other', photosite='All data', 
                                     folderName=folderName,ageSim=ageSim, sarkaSim=sarkaSim, sfc=sfc)
-    
+    #if stand == 'SF_32.xlsx': break
         
 #%%          
              

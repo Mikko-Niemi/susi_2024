@@ -378,7 +378,7 @@ class Stand():
         tau = 3.0
         for c in range(self.ncols):
             self.nut_stat[c] = self.nut_stat[c] + (minnstat[c] - self.nut_stat[c])/tau     
-
+        self.nut_stat = np.clip(self.nut_stat, 0.7, 1.3)                       # Too high nutstat increases transpiration too much
 
         
     def update_spara(self, spara):
