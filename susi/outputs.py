@@ -513,11 +513,11 @@ class Outputs():
         ch4c_release= self.ncf.createVariable('/balance/C/ch4c_release','f4',('nscens','nyrs', 'ncols',))
         ch4c_release.units = 'ch4-c emission/sink from peat [kg/ha/yr]'
         LMWdoc_to_water= self.ncf.createVariable('/balance/C/LMWdoc_to_water','f4',('nscens','nyrs', 'ncols',))
-        LMWdoc_to_water.units = 'LWW DOC transpot to ditch in C [kg/ha/yr]'
-        HMWdoc_to_atm= self.ncf.createVariable('/balance/C/LMWdoc_to_atm','f4',('nscens','nyrs', 'ncols',))
-        HMWdoc_to_atm.units = 'LMW DOC biodegraded and emitted to atmosphere during the transport [kg/ha/yr]'
+        LMWdoc_to_water.units = 'LMW DOC transpot to ditch in C [kg/ha/yr]'
+        LMWdoc_to_atm= self.ncf.createVariable('/balance/C/LMWdoc_to_atm','f4',('nscens','nyrs', 'ncols',))
+        LMWdoc_to_atm.units = 'LMW DOC biodegraded and emitted to atmosphere during the transport [kg/ha/yr]'
         HMW_to_water= self.ncf.createVariable('/balance/C/HMW_to_water','f4',('nscens','nyrs', 'ncols',))
-        HMW_to_water.units = 'HWW DOC transpot to ditch in C [kg/ha/yr]'
+        HMW_to_water.units = 'HMW DOC transpot to ditch in C [kg/ha/yr]'
         HMW_to_atm= self.ncf.createVariable('/balance/C/HMW_to_atm','f4',('nscens','nyrs', 'ncols',))
         HMW_to_atm.units = 'HMW DOC biodegraded and emitted to atmosphere during the transport [kg/ha/yr]'
         stand_c_balance_c= self.ncf.createVariable('/balance/C/stand_c_balance_c','f4',('nscens','nyrs', 'ncols',))
